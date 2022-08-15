@@ -2,7 +2,7 @@ import React from "react"
 import Image from "./index"
 
 export default {
-  title: "components/image",
+  title: "primitives/image",
   component: Image,
   argTypes: {
     src: { control: "text" },

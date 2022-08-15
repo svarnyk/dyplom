@@ -2,7 +2,7 @@ import React from "react"
 import Heading from "./heading"
 
 export default {
-  title: "Components/Heading",
+  title: "Primitives/Heading",
   component: Heading,
   argTypes: {
     weight: {
