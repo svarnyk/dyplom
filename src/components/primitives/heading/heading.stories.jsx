@@ -13,7 +13,7 @@ export default {
 }
 
 export function Heading1(args) {
-  return <Heading {...args}>Heading1</Heading>
+  return <Heading {...args}>Welcome To VideoNova</Heading>
 }
 
 Heading1.args = {
@@ -21,7 +21,7 @@ Heading1.args = {
 }
 
 export function Heading2(args) {
-  return <Heading {...args}>Heading2</Heading>
+  return <Heading {...args}>Best Creators</Heading>
 }
 
 Heading2.args = {
@@ -29,7 +29,7 @@ Heading2.args = {
 }
 
 export function Heading3(args) {
-  return <Heading {...args}>Heading3</Heading>
+  return <Heading {...args}>Anna May</Heading>
 }
 
 Heading3.args = {
@@ -37,7 +37,7 @@ Heading3.args = {
 }
 
 export function Heading4(args) {
-  return <Heading {...args}>Heading4</Heading>
+  return <Heading {...args}>All Rights Reserved 2022</Heading>
 }
 
 Heading4.args = {
@@ -45,7 +45,7 @@ Heading4.args = {
 }
 
 export function Heading5(args) {
-  return <Heading {...args}>Heading5</Heading>
+  return <Heading {...args}>Create videos with a single click. Add subtitles, transcribe audio and more</Heading>
 }
 
 Heading5.args = {
