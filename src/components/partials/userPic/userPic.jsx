@@ -15,3 +15,4 @@ UserPic.PropTypes = {
   url: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
 }
+UserPic.defaultProps = {}

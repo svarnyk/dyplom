@@ -1,0 +1,9 @@
+.counter{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.counter__icon{
+    display: flex;
+    align-items: center;
+}
