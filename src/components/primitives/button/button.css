@@ -1,0 +1,72 @@
+.button {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 44px;
+    width: fit-content;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 16px 56px;
+}
+
+.button_primary {
+    background-color: #5B4DFF;
+    border: none;
+    color: white;
+}
+
+.button_primary:hover {
+    box-shadow: 0 4px 22px rgba(91, 77, 255, 0.2)
+}
+
+.button_primary:active {
+    box-shadow: inset 0 4px 22px rgba(5, 0, 61, 0.2)
+}
+
+.button_transparent {
+    background: none;
+    border: 2px #5B4DFF solid;
+    color: #5B4DFF;
+    font-weight: 700;
+    padding: 14px 54px;
+}
+/*.button_transparent:hover {*/
+/*    box-shadow: 0 4px 22px rgba(91, 77, 255, 0.2);*/
+/*}*/
+
+.button_link {
+    color: #5B4DFF;
+    border: none;
+    background: none;
+    padding: 0 !important;
+    width: fit-content !important;
+    font-weight: 700;
+}
+
+
+.button_stretch {
+    width: 100%;
+}
+
+.button_disabled {
+    pointer-events: none;
+}
+
+.button_disabled.button_primary {
+    background: rgba(91, 77, 255, 0.6);
+}
+
+.button_disabled.button_transparent {
+    border: 2px rgba(91, 77, 255, 0.6) solid;
+    color: rgba(91, 77, 255, 0.6);
+}
+
+.button_disabled.button_link {
+    color: rgba(91, 77, 255, 0.6);
+}

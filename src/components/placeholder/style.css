@@ -1,0 +1,8 @@
+.tech__placeholder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #666;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
