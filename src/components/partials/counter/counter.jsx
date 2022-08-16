@@ -51,6 +51,6 @@ Counter.PropTypes = {
 };
 
 Counter.defaultProps = {
-  variant: "likes",
-  count: "193"
+  variant: undefined,
+  count: undefined
 };
