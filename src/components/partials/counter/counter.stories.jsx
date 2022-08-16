@@ -25,8 +25,5 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   count: 193,
-  variant: {
-    options: ['likes', 'videos'],
-    control: {type: 'radio'},
-  },
+  variant: 'likes',
 }
