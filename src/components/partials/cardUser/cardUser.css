@@ -1,0 +1,28 @@
+.cardUser {
+    width: 290px;
+    height: 395px;
+    border-radius: 14px;
+    background-color: #E6E8FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.cardUser__userPic {
+    padding-bottom: 18px;
+}
+
+.cardUser__counters {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 77px;
+    flex-wrap: wrap;
+    gap: 10px;
+    row-gap: 0;
+}
+.cardUser__button {
+padding-bottom: 35px;
+}
