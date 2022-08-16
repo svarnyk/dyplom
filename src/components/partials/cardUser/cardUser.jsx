@@ -12,7 +12,7 @@ export default function CardUser(props) {
   return (
     <div className="cardUser">
       <div className="cardUser__userPic">
-        <UserPic url={props.userPicUrl} alt={props.userPicAlt} />
+        <UserPic url={props.userPicUrl} alt={props.userPicAlt} variant={"middle"}/>
       </div>
       <div className="cardUser__userName">
         <Heading weight={3}>{props.username}</Heading>

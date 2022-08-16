@@ -1,8 +1,29 @@
-.userPic{
+.userPic_small {
+    width: 54px;
+    height: 54px;
+
+}
+
+.userPic_small img {
+    border-radius: 27px;
+}
+
+.userPic_middle {
     width: 133px;
     height: 133px;
 
 }
-.userPic img{
+
+.userPic_middle img {
     border-radius: 67px;
+}
+
+.userPic_large {
+    width: 154px;
+    height: 154px;
+
+}
+
+.userPic_large img {
+    border-radius: 77px;
 }
