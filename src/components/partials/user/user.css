@@ -1,0 +1,24 @@
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_small {
+    gap: 16px;
+}
+
+.user_small h5{
+    color: black;
+    font-weight: 700;
+}
+
+.user_middle {
+    flex-direction: column;
+    gap: 18px;
+}
+
+.user_large {
+    flex-direction: column;
+    gap: 20px;
+}
