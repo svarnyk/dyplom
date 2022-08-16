@@ -16,7 +16,7 @@ export default {
 
 function Template(args) {
   return (
-    <div style={{ backgroundColor: "#FFFFFF" }}>
+    <div>
       <CardUser {...args} />
     </div>
   )
