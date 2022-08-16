@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../primitives/button/button";
+import User from "../user/user";
 import UserPic from "../userPic/userPic";
 import Counter from "../counter/counter";
 import Heading from "../../primitives/heading/heading";
@@ -11,12 +12,15 @@ import "./cardUser.css";
 export default function CardUser(props) {
   return (
     <div className="cardUser">
-      <div className="cardUser__userPic">
-        <UserPic url={props.userPicUrl} alt={props.userPicAlt} variant={"middle"}/>
+      <div className="cardUser__user">
+        <User variant={"middle"} userPicUrl={props.userPicUrl} userPicAlt={props.userPicAlt} username={props.username}/>
       </div>
-      <div className="cardUser__userName">
-        <Heading weight={3}>{props.username}</Heading>
-      </div>
+      {/*<div className="cardUser__userPic">*/}
+      {/*  <UserPic url={props.userPicUrl} alt={props.userPicAlt} variant={"middle"}/>*/}
+      {/*</div>*/}
+      {/*<div className="cardUser__userName">*/}
+      {/*  <Heading weight={3}>{props.username}</Heading>*/}
+      {/*</div>*/}
       <div className="cardUser__counters">
         <div className="cardUser__counterVideos">
           <Counter variant={"videos"} count={props.videosCount} />
