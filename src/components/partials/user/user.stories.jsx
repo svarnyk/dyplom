@@ -9,7 +9,7 @@ export default {
       options: ["small", "middle", "large"],
       control: { type: "radio" },
     },
-    username: "Anna May",
+    userName: "Anna May",
     userPicUrl: "https://faunistics.com/wp-content/uploads/2019/02/1-4-735x628.jpg",
     userPicAlt: "UserPic",
 
@@ -28,7 +28,7 @@ export const Small = Template.bind({})
 
 Small.args = {
   variant: "small",
-  username: "Chester",
+  userName: "Chester",
   userPicUrl: "https://faunistics.com/wp-content/uploads/2019/02/1-4-735x628.jpg",
   userPicAlt: "UserPic",
 }

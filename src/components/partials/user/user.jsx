@@ -24,7 +24,7 @@ export default function User (props) {
         <UserPic url={props.userPicUrl} alt={props.userPicAlt} variant={props.variant}/>
       </div>
       <div className="user__userName">
-        <Heading weight={headingWeight()}>{props.username}</Heading>
+        <Heading weight={headingWeight()}>{props.userName}</Heading>
       </div>
     </div>
   )
@@ -34,11 +34,11 @@ User.PropTypes = {
   variant: PropTypes.oneOf(["small", "middle", "large"]),
   userPicUrl: PropTypes.string.isRequired,
   userPicAlt: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
 }
 User.defaultProps = {
   variant: "middle",
   userPicUrl: undefined,
   userPicAlt: undefined,
-  username: undefined,
+  userName: undefined,
 }
