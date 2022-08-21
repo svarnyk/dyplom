@@ -7,12 +7,15 @@ import PropTypes from "prop-types";
 import "./header.css"
 
 export default function Header(props) {
+  let variant;
   const headerIsOpen = () => {
-    if (props.variant === "close") {
+    if (props.isHeaderOpen === false) {
+      variant = "close"
       return (
         <Button label={"Sing Up"} variant={"transparent"}/>
       )
-    } else if (props.variant === "open") {
+    } else if (props.isHeaderOpen === true) {
+      variant = "open"
       return (
         <User
           variant={"small"}
@@ -23,7 +26,8 @@ export default function Header(props) {
       )
     }
   }
-  const className = `header header_${props.variant}`;
+
+  const className = `header header_${variant}`;
   return (
     <div className={className}>
       <div className="header__wrapper">
@@ -39,9 +43,15 @@ export default function Header(props) {
 }
 
 Header.PropTypes = {
-  variant: PropTypes.oneOf(["open", "close"]),
+  isHeaderOpen: PropTypes.bool.isRequired,
+  userName: PropTypes.string,
+  userPicUrl: PropTypes.string,
+  userPicAlt: PropTypes.string,
 }
 
 Header.defaultProps = {
-  variant: "close",
+  isHeaderOpen: false,
+  userName: undefined,
+  userPicUrl: undefined,
+  userPicAlt: undefined,
 }

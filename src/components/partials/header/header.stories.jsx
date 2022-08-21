@@ -5,10 +5,10 @@ export default {
   title: "Partials/Header",
   Component: Header,
   argTypes: {
-    variant: {
-      options: ["open", "close"],
-      control: {type: "radio"}
-    }
+    isHeaderOpen: {boolean: {action: false}},
+    userName: "Chester",
+    userPicUrl: "https://faunistics.com/wp-content/uploads/2019/02/1-4-735x628.jpg",
+    userPicAlt: "UserPic",
   }
 }
 
@@ -23,5 +23,8 @@ function Template(args) {
 export const Primary = Template.bind({})
 
 Primary.args = {
-  variant: "close"
+  isHeaderOpen: false,
+  userName: "Chester",
+  userPicUrl: "https://faunistics.com/wp-content/uploads/2019/02/1-4-735x628.jpg",
+  userPicAlt: "UserPic",
 }
