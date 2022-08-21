@@ -1,0 +1,22 @@
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 14px;
+  background: #E9EEF8;
+  padding: 25.5px 24px;
+}
+
+.input input {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #939393;
+  outline: none;
+  padding: 0;
+}
+.input__closeEye, .input__openEye{
+ display: flex;
+  align-items: center;
+}
