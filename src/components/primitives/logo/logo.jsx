@@ -21,7 +21,7 @@ export default function Logo(props) {
 }
 
 Logo.PropTypes = {
-  color: PropTypes.oneOf(["blue", "white"])
+  color: PropTypes.oneOf(["blue", "white"]).isRequired
 }
 
 Logo.defaultProps = {
