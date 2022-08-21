@@ -11,7 +11,7 @@ export default function CardUser(props) {
   return (
     <div className="cardUser">
       <div className="cardUser__user">
-        <User variant={"middle"} userPicUrl={props.userPicUrl} userPicAlt={props.userPicAlt} username={props.username}/>
+        <User variant={"middle"} userPicUrl={props.userPicUrl} userPicAlt={props.userPicAlt} userName={props.userName}/>
       </div>
       <div className="cardUser__counters">
         <div className="cardUser__counterVideos">
@@ -29,7 +29,7 @@ export default function CardUser(props) {
 }
 
 CardUser.PropTypes = {
-  username: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
   userPicUrl: PropTypes.string.isRequired,
   userPicAlt: PropTypes.string.isRequired,
   videosCount: PropTypes.string.isRequired,
@@ -37,7 +37,7 @@ CardUser.PropTypes = {
 };
 
 CardUser.defaulProps = {
-  username: undefined,
+  userName: undefined,
   userPicUrl: undefined,
   userPicAlt: undefined,
   videosCount: undefined,
