@@ -1,50 +1,48 @@
-import React from "react";
+import React, {useState} from "react";
 import {AiOutlineEyeInvisible} from "react-icons/ai";
 import {AiOutlineEye} from "react-icons/ai";
 import PropTypes from "prop-types";
 import "./input.css";
 
 export default function Input(props) {
-  // const [inputState, setInputState] = useState("")
-  //
-  // const handleButtonClick = useCallback(() => {
-  //   if (typeof buttonOnClick === "function") buttonOnClick(inputState)
-  // }, [buttonOnClick, inputState])
-  //
-  // const handleInputChange = (el) => setInputState(el.target.value)
-  // const renderButton = (withButton ?? true) && buttonLabel && buttonOnClick
-  let type = "text";
-  const closeEye = () => {
-    return (
-      <div className="input__closeEye" onClick={()=>{type="password"}}>
-        <AiOutlineEyeInvisible  size={"20px"}/>
-      </div>
-    )
+  const [closeEyeStatus, setCloseEyeStatus] = useState("active");
+  const [openEyeStatus, setOpenEyeStatus] = useState("hidden");
+  const closeEyeClassName = `eye__closeEye eyeStatus_${closeEyeStatus}`;
+  const openEyeClassName = `eye__openEye eyeStatus_${openEyeStatus}`;
+
+  function openEye() {
+    setCloseEyeStatus("hidden")
+    setOpenEyeStatus("active")
+    setInputType("text")
   }
-  const openEye = () => {
-    return (
-      <div className="input__openEye" onClick={()=>{type="text"}}>
-        <AiOutlineEye size={"20px"}/>
-      </div>
-    )
+
+  function closeEye() {
+    setCloseEyeStatus("active")
+    setOpenEyeStatus("hidden")
+    setInputType("password")
   }
-  if (props.variant === "text") {
-    type = "text"
-  } else if (props.variant === "password") {
-    type = "password"
-  }
-  const className = `input input_${props.variant}`
+  const [inputType, setInputType] = useState("password")
+
+  const className = `input input_${inputType}`
   return (
     <div className={className}>
       <input
-        // type="text"
         // value={inputState}
         // onChange={handleInputChange}
         placeholder={props.placeholder}
-        type={type}
+        type={inputType}
         disabled={props.disabled}
       />
-      <div className="input__revealPassword">{closeEye()}</div>
+      <div className="input__revealPassword">
+        <div className="eye">
+          <div className={closeEyeClassName} onClick={openEye}>
+            <AiOutlineEyeInvisible size={"20px"}/>
+          </div>
+          <div className={openEyeClassName} onClick={closeEye}>
+            <AiOutlineEye size={"20px"}/>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

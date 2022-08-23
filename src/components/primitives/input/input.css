@@ -16,7 +16,15 @@
   outline: none;
   padding: 0;
 }
-.input__closeEye, .input__openEye{
- display: flex;
+.eye__closeEye, .eye__openEye {
+  display: flex;
   align-items: center;
+}
+
+.eyeStatus_active {
+  display: flex;
+}
+
+.eyeStatus_hidden {
+  display: none;
 }
