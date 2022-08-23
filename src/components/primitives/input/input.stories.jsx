@@ -31,7 +31,7 @@ function Template(args) {
 export const Primary = Template.bind({})
 
 Primary.args = {
-  variant: "text",
+  variant: "password",
   placeholder: "Past link...",
   disabled: false,
   // withButton: true,

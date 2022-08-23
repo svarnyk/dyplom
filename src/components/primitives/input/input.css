@@ -16,6 +16,7 @@
   outline: none;
   padding: 0;
 }
+
 .eye__closeEye, .eye__openEye {
   display: flex;
   align-items: center;
