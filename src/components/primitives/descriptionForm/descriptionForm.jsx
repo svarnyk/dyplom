@@ -4,6 +4,7 @@ import Heading from "../heading/heading";
 import "./descriptionForm.css"
 
 export default function DescriptionForm(props) {
+  const classNameTextForm = `descriptionForm__textForm descriptionForm__textForm_${props.disabled}`
   return (
     <div className="descriptionForm">
       <div className="descriptionForm__heading">
@@ -11,7 +12,7 @@ export default function DescriptionForm(props) {
       </div>
       <label>
         <textarea
-          className="descriptionForm__textForm"
+          className={classNameTextForm}
           rows={4}
           placeholder={props.placeholder}
           disabled={props.disabled}

@@ -12,13 +12,35 @@
   border: none;
   resize: none;
   font-size: 16px;
-  color: #939393;
+  color: #5B5B5B;
   font-family: "Plus Jakarta Display", sans-serif;
   font-weight: 400;
   line-height: 22px;
   box-sizing: border-box;
   overflow: hidden;
 }
+.descriptionForm__textForm_true{
+  color: #b7b6b6;
+}
 .descriptionForm__textForm:focus{
   outline: none;
+}
+.descriptionForm__textForm textarea::-webkit-input-placeholder {
+  color: #939393;
+}
+
+.descriptionForm__textForm textarea:-moz-placeholder { /* Firefox 18- */
+  color: #939393;
+}
+
+.descriptionForm__textForm textarea::-moz-placeholder {  /* Firefox 19+ */
+  color: #939393;
+}
+
+.descriptionForm__textForm textarea:-ms-input-placeholder {
+  color: #939393;
+}
+
+.descriptionForm__textForm textarea::placeholder {
+  color: #939393;
 }
