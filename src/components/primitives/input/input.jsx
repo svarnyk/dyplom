@@ -25,13 +25,14 @@ export default function Input(props) {
 
     const closeEyeClassName = `eye__closeEye eyeStatus_${closeEyeStatus}`;
     const openEyeClassName = `eye__openEye eyeStatus_${openEyeStatus}`;
+    const contentClassName = `input__content input__content_${props.disabled}`;
 
     return (
       <div className="input">
         <div className="input__heading">
           <Heading weight={3}>{props.heading}</Heading>
         </div>
-        <div className="input__password">
+        <div className={contentClassName}>
           <input
             // value={inputState}
             // onChange={handleInputChange}
@@ -53,12 +54,13 @@ export default function Input(props) {
       </div>
     )
   } else if (props.variant === "text") {
+    const contentClassName = `input__content input__content_${props.disabled}`;
     return (
       <div className="input">
         <div className="input__heading">
           <Heading weight={3}>{props.heading}</Heading>
         </div>
-        <div className="input__text">
+        <div className={contentClassName}>
           <input
             // value={inputState}
             // onChange={handleInputChange}

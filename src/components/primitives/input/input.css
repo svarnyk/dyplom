@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 19px;
 }
-.input__text, .input__password {
+.input__content {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,14 +12,23 @@
   padding: 25.5px 24px;
 }
 
-.input__text input, .input__password input {
+.input__content input {
   width: 100%;
   background: none;
   border: none;
   font-size: 16px;
-  color: #939393;
+  color: #5B5B5B;
   outline: none;
   padding: 0;
+}
+.input__content input::placeholder {
+  color: #939393;
+}
+.input__content_true input {
+  color: #b7b6b6;
+}
+.input__content_true input::placeholder {
+  color: #b7b6b6;
 }
 
 .eye__closeEye, .eye__openEye {
