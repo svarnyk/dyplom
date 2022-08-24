@@ -1,0 +1,36 @@
+.signUp__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 644px;
+  background-color: white;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 69px 90px 90px;
+}
+
+.signUp__buttonCross {
+  position: relative;
+  left: 498px;
+  bottom: 29px;
+}
+
+.signUp__heading, .signUp__button, .signUp__signIn {
+  display: flex;
+  justify-content: center;
+}
+
+.signUp__heading {
+  padding-bottom: 22px;
+}
+
+.signUp__name, .signUp__password {
+  padding-bottom: 30px;
+}
+
+.signUp__repeatPassword, .signUp__button {
+  padding-bottom: 50px;
+}
+
+.signUp__signIn {
+  gap: 10px;
+}
