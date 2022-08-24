@@ -1,6 +1,7 @@
 import React from "react";
 import {action} from "@storybook/addon-actions";
 import Input from "./input";
+import {string} from "prop-types";
 
 export default {
   title: "Primitives/Input",
@@ -10,8 +11,9 @@ export default {
       options: ["text", "password"],
       control: {type: "radio"}
     },
-    placeholder: "Past link...",
+    placeholder: string,
     disabled: { boolean: { action: false } },
+    heading: string,
     //   table: {
     //     defaultValue: { summary: "true" },
     //   },
@@ -34,6 +36,7 @@ Primary.args = {
   variant: "password",
   placeholder: "Past link...",
   disabled: false,
+  heading: "Input"
   // withButton: true,
   // buttonLabel: "label",
   // buttonOnClick: action("submit"),

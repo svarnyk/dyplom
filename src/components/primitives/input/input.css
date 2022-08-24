@@ -1,5 +1,10 @@
 .input {
   display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+.input__text, .input__password {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 14px;
@@ -7,7 +12,7 @@
   padding: 25.5px 24px;
 }
 
-.input input {
+.input__text input, .input__password input {
   width: 100%;
   background: none;
   border: none;
