@@ -44,3 +44,23 @@
 .descriptionForm__textForm textarea::placeholder {
   color: #939393;
 }
+
+.descriptionForm__textForm_true textarea::-webkit-input-placeholder {
+  color: #b7b6b6;
+}
+
+.descriptionForm__textForm_true textarea:-moz-placeholder { /* Firefox 18- */
+  color: #b7b6b6;
+}
+
+.descriptionForm__textForm_true textarea::-moz-placeholder {  /* Firefox 19+ */
+  color: #b7b6b6;
+}
+
+.descriptionForm__textForm_true textarea:-ms-input-placeholder {
+  color: #b7b6b6;
+}
+
+.descriptionForm__textForm_true textarea::placeholder {
+  color: #b7b6b6;
+}
