@@ -35,7 +35,7 @@ export default function SignUp() {
         <div className="signUp__repeatPassword">
           <Input
             variant={"password"}
-            heading={"Password"}
+            heading={"Repeat Password"}
             placeholder={"Repeat password…"}
           />
         </div>
