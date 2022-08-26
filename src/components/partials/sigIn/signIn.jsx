@@ -37,6 +37,7 @@ export default function SignIn(props) {
           <Button
             variant={"primary"}
             label={"Sign In"}
+            onClick={props.buttonOnClick}
           />
         </div>
         <div className="signIn__signUp">
@@ -44,6 +45,7 @@ export default function SignIn(props) {
           <Button
             variant={"link"}
             label={"Sign Up"}
+            onClick={props.signUpOnClick}
           />
         </div>
       </div>
@@ -53,6 +55,6 @@ export default function SignIn(props) {
 SignIn.PropTypes = {
   crossOnClick: PropTypes.func,
   buttonOnClick: PropTypes.func,
-  signInOnClick: PropTypes.func,
+  signUpOnClick: PropTypes.func,
 }
 SignIn.defaultProps = {}
