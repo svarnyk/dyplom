@@ -1,0 +1,36 @@
+.signIn__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 644px;
+    background-color: white;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 69px 90px 90px;
+}
+
+.signIn__buttonCross {
+    position: relative;
+    left: 498px;
+    bottom: 29px;
+}
+
+.signIn__heading, .signIn__button, .signIn__signUp {
+    display: flex;
+    justify-content: center;
+}
+
+.signIn__heading {
+    padding-bottom: 22px;
+}
+
+.signIn__name {
+    padding-bottom: 30px;
+}
+
+.signIn__password, .signIn__button {
+    padding-bottom: 50px;
+}
+
+.signIn__signUp {
+    gap: 10px;
+}
