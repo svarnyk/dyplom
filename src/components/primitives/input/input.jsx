@@ -4,6 +4,7 @@ import {AiOutlineEye} from "react-icons/ai";
 import PropTypes from "prop-types";
 import "./input.css";
 import Heading from "../heading/heading";
+import Button from "../button/button";
 
 export default function Input(props) {
   if (props.variant === "password") {
@@ -26,11 +27,19 @@ export default function Input(props) {
     const closeEyeClassName = `eye__closeEye eyeStatus_${closeEyeStatus}`;
     const openEyeClassName = `eye__openEye eyeStatus_${openEyeStatus}`;
     const contentClassName = `input__content input__content_${props.disabled}`;
+    const remindClassName = `input__remindPassword input__remindPassword_${props.remindPassword}`
 
     return (
       <div className="input">
-        <div className="input__heading">
+        <div className="input__heading input__heading_password">
           <Heading weight={3}>{props.heading}</Heading>
+          <div className={remindClassName}>
+            <Button
+              variant={"link"}
+              label={"Forgot password?"}
+              onClick={props.remindButtonFunc}
+            />
+          </div>
         </div>
         <div className={contentClassName}>
           <input
@@ -78,6 +87,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
   heading: PropTypes.string,
+  remindPassword:PropTypes.bool,
   /**
    * Handles function on button click with input content as argument:
    * `(submit) => alert('submit recieved: ' + submit)`
@@ -91,5 +101,6 @@ Input.defaultProps = {
   placeholder: undefined,
   disabled: false,
   heading: undefined,
+  remindPassword:false,
   // buttonOnClick: undefined,
 }

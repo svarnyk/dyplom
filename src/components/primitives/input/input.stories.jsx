@@ -14,6 +14,7 @@ export default {
     placeholder: string,
     disabled: { boolean: { action: false } },
     heading: string,
+    remindPassword: { boolean: { action: false } },
     //   table: {
     //     defaultValue: { summary: "true" },
     //   },
@@ -36,7 +37,8 @@ Primary.args = {
   variant: "password",
   placeholder: "Past link...",
   disabled: false,
-  heading: "Input"
+  heading: "Input",
+  remindPassword: false,
   // withButton: true,
   // buttonLabel: "label",
   // buttonOnClick: action("submit"),
