@@ -31,6 +31,7 @@ export default function SignUp(props) {
             variant={"password"}
             heading={"Password"}
             placeholder={"Type password…"}
+            remindPassword={false}
           />
         </div>
         <div className="signUp__repeatPassword">
@@ -38,6 +39,7 @@ export default function SignUp(props) {
             variant={"password"}
             heading={"Repeat Password"}
             placeholder={"Repeat password…"}
+            remindPassword={false}
           />
         </div>
         <div className="signUp__button">
