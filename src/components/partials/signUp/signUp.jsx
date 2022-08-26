@@ -5,12 +5,13 @@ import Heading from "../../primitives/heading/heading";
 import Input from "../../primitives/input/input";
 import Button from "../../primitives/button/button";
 import { GrClose } from "react-icons/gr";
+import PropTypes from "prop-types";
 
-export default function SignUp() {
+export default function SignUp(props) {
   return (
     <div className="signUp">
       <div className="signUp__wrapper">
-        <div className="signUp__buttonCross">
+        <div className="signUp__buttonCross" onClick={props.crossOnClick}>
           <GrClose
           size={"16px"}
           />
@@ -56,5 +57,9 @@ export default function SignUp() {
     </div>
   )
 }
-SignUp.PropTypes = {}
+SignUp.PropTypes = {
+  crossOnClick: PropTypes.func,
+  buttonOnClick: PropTypes.func,
+  signInOnClick: PropTypes.func,
+}
 SignUp.defaultProps = {}
