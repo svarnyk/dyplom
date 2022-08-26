@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./signUp.css"
+import "./signUp.css";
 import Heading from "../../primitives/heading/heading";
 import Input from "../../primitives/input/input";
 import Button from "../../primitives/button/button";
@@ -13,11 +13,11 @@ export default function SignUp(props) {
       <div className="signUp__wrapper">
         <div className="signUp__buttonCross" onClick={props.crossOnClick}>
           <GrClose
-          size={"16px"}
+            size={"16px"}
           />
         </div>
         <div className="signUp__heading">
-          <Heading weight={1}>Sign <span style={{color: "#FF6363"}}>Up</span></Heading>
+          <Heading weight={1}>Sign <span style={{ color: "#FF6363" }}>Up</span></Heading>
         </div>
         <div className="signUp__name">
           <Input
@@ -44,22 +44,24 @@ export default function SignUp(props) {
           <Button
             variant={"primary"}
             label={"Sign Up"}
+            onClick={props.buttonOnClick}
           />
         </div>
         <div className="signUp__signIn">
           <Heading weight={5}>Already have an account?</Heading>
           <Button
-          variant={"link"}
-          label={"Sign In"}
+            variant={"link"}
+            label={"Sign In"}
+            onClick={props.signInOnClick}
           />
         </div>
       </div>
     </div>
-  )
+  );
 }
 SignUp.PropTypes = {
   crossOnClick: PropTypes.func,
   buttonOnClick: PropTypes.func,
-  signInOnClick: PropTypes.func,
-}
-SignUp.defaultProps = {}
+  signInOnClick: PropTypes.func
+};
+SignUp.defaultProps = {};
