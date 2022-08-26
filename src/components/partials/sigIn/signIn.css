@@ -19,6 +19,14 @@
     justify-content: center;
 }
 
+.signIn__error {
+    background-color: #FADCDE;
+    border-radius: 14px;
+    padding: 14px 0;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
 .signIn__heading {
     padding-bottom: 22px;
 }

@@ -19,6 +19,9 @@ export default function SignIn(props) {
         <div className="signIn__heading">
           <Heading weight={1}>Sign <span style={{color: "#FF6363"}}>In</span></Heading>
         </div>
+        <div className="signIn__error">
+          <Heading weight={5}><span style={{color: "black", fontWeight: 700}}>Your Password is incorrect. Please, try again</span></Heading>
+        </div>
         <div className="signIn__name">
           <Input
             variant={"text"}
