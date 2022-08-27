@@ -35,6 +35,11 @@
     color: #b7b6b6;
 }
 
+.input__content__remindPassword_true{
+  border: 2px solid #FF0000;
+  padding: 23px 24px;
+}
+
 .input__heading_password {
     display: flex;
     justify-content: space-between;

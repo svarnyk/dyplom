@@ -26,7 +26,7 @@ export default function Input(props) {
 
     const closeEyeClassName = `eye__closeEye eyeStatus_${closeEyeStatus}`;
     const openEyeClassName = `eye__openEye eyeStatus_${openEyeStatus}`;
-    const contentClassName = `input__content input__content_${props.disabled}`;
+    const contentClassName = `input__content input__content_${props.disabled} input__content__remindPassword_${props.remindPassword}`;
     const remindClassName = `input__remindPassword input__remindPassword_${props.remindPassword}`
 
     return (
