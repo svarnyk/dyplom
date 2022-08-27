@@ -1,47 +1,48 @@
 .signIn__wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 644px;
-    background-color: white;
-    border-radius: 20px;
-    box-sizing: border-box;
-    padding: 69px 90px 90px;
+  display: flex;
+  flex-direction: column;
+  width: 644px;
+  background-color: white;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 69px 90px 90px;
 }
 
 .signIn__buttonCross {
-    position: relative;
-    left: 498px;
-    bottom: 29px;
+  position: relative;
+  left: 498px;
+  bottom: 29px;
 }
 
 .signIn__heading, .signIn__button, .signIn__signUp {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.signIn__error_true {
-    background-color: #FADCDE;
-    border-radius: 14px;
-    padding: 14px 0;
-    margin-bottom: 30px;
-    text-align: center;
+.signIn__error {
+  background-color: #FADCDE;
+  border-radius: 14px;
+  padding: 14px 0;
+  margin-bottom: 30px;
+  text-align: center;
 }
-.signIn__error_false{
+
+.signIn__error_false {
   display: none;
 }
 
 .signIn__heading {
-    padding-bottom: 22px;
+  padding-bottom: 22px;
 }
 
 .signIn__name {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .signIn__password, .signIn__button {
-    padding-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 .signIn__signUp {
-    gap: 10px;
+  gap: 10px;
 }
