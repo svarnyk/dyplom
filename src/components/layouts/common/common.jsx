@@ -1,41 +1,44 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
+import Footer from "../../partials/footer/footer";
+import Header from "../../partials/header/header";
+import "./common.css";
 
-import { Footer, Header } from "../../partials"
-
-export default function DefaultLayout({ headerLogo, headerColor, children }) {
+export default function DefaultLayout(props) {
   return (
     <div className="siteContent">
       <div className="siteContent__header">
-        <Header logoStyle={headerLogo} color={headerColor} />
+        {/*HEADER*/}
+        <Header
+        isHeaderOpen={props.isHeaderOpen}
+        userName={props.userName}
+        userPicUrl={props.userPicUrl}
+        userPicAlt={props.userPicAlt}
+        />
       </div>
-
-      <div className="siteContent__content">{children}</div>
+      <div className="siteContent__content">{props.children}</div>
       <div className="siteContent__footer">
-        <Footer />
+        {/*FOOTER*/}
+        <Footer/>
       </div>
     </div>
   )
 }
 
 DefaultLayout.propTypes = {
-  /**
-   * Options for header logo
-   */
-  headerLogo: PropTypes.oneOf(["main", "dark", "light"]),
-  /**
-   * Color scheme for header elements
-   */
-  headerColor: PropTypes.oneOf(["dark", "light"]).isRequired,
-  /**
-   * Content to put inside block.
-   * Could be any react node
-   */
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  isHeaderOpen:PropTypes.bool,
+  userName:PropTypes.string,
+  userPicUrl:PropTypes.string,
+  userPicAlt:PropTypes.string,
 }
 DefaultLayout.defaultProps = {
-  headerLogo: "main",
+  children:undefined,
+  isHeaderOpen:false,
+  userName:undefined,
+  userPicUrl:undefined,
+  userPicAlt:undefined,
 }

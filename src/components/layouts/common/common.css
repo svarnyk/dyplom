@@ -1,7 +1,14 @@
-.siteContent{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.siteContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.siteContent__content{flex-grow: 1;}
+/*.siteContent__header, .siteContent__footer {*/
+/*    flex: 1;*/
+/*}*/
+
+.siteContent__content {
+    flex-grow: 1;
+
+}
