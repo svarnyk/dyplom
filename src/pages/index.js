@@ -1,4 +1,4 @@
-import HomePage from "./home"
+import HomePage from "./home/home"
 import UserProfilePage from "./userProfile"
 import CategoryPage from "./category"
 import WhichLightPage from "./whichLight"
