@@ -9,8 +9,17 @@
 .homePage__heading {
     padding-bottom: 20px;
 }
-.homePage__greeting{
+
+.homePage__greeting {
     padding-bottom: 50px;
+}
+
+.homePage__button {
+    padding-bottom: 85px;
+}
+
+.homePage__users {
+    padding-bottom: 85px;
 }
 
 @media screen and (max-width: 768px) {
