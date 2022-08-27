@@ -19,12 +19,15 @@
     justify-content: center;
 }
 
-.signIn__error {
+.signIn__error_true {
     background-color: #FADCDE;
     border-radius: 14px;
     padding: 14px 0;
     margin-bottom: 30px;
     text-align: center;
+}
+.signIn__error_false{
+  display: none;
 }
 
 .signIn__heading {

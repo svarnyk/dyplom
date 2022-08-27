@@ -8,6 +8,7 @@ import { GrClose } from "react-icons/gr";
 import PropTypes from "prop-types";
 
 export default function SignIn(props) {
+  const errorClassName = `signIn__error_${props.remindPassword}`;
   return (
     <div className="signIn">
       <div className="signIn__wrapper">
@@ -19,7 +20,7 @@ export default function SignIn(props) {
         <div className="signIn__heading">
           <Heading weight={1}>Sign <span style={{color: "#FF6363"}}>In</span></Heading>
         </div>
-        <div className="signIn__error">
+        <div className={errorClassName}>
           <Heading weight={5}><span style={{color: "black", fontWeight: 700}}>Your Password is incorrect. Please, try again</span></Heading>
         </div>
         <div className="signIn__name">
@@ -34,6 +35,7 @@ export default function SignIn(props) {
             variant={"password"}
             heading={"Password"}
             placeholder={"Type password…"}
+            remindPassword={props.remindPassword}
           />
         </div>
         <div className="signIn__button">
@@ -59,5 +61,6 @@ SignIn.PropTypes = {
   crossOnClick: PropTypes.func,
   buttonOnClick: PropTypes.func,
   signUpOnClick: PropTypes.func,
+  remindPassword:PropTypes.bool,
 }
 SignIn.defaultProps = {}

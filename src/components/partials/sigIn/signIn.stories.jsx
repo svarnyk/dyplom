@@ -4,7 +4,9 @@ import SignIn from "./signIn";
 export default {
   title: "Partials/SignIn",
   Component: SignIn,
-  argTypes: {},
+  argTypes: {
+    remindPassword: {boolean: {action: false}}
+  },
 
 }
 
@@ -18,4 +20,6 @@ function Template(args) {
 
 export const Primary = Template.bind({})
 
-Primary.args = {}
+Primary.args = {
+  remindPassword: false,
+}
