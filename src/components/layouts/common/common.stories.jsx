@@ -15,7 +15,7 @@ export default {
 
 function Template(args){
   return(
-    <div>
+    <div style={{height: "100%"}}>
       <DefaultLayout {...args}/>
     </div>
   )

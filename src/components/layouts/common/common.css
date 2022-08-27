@@ -4,9 +4,6 @@
     height: 100%;
 }
 
-/*.siteContent__header, .siteContent__footer {*/
-/*    flex: 1;*/
-/*}*/
 
 .siteContent__content {
     flex-grow: 1;
