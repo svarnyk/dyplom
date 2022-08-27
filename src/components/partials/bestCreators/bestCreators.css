@@ -1,0 +1,15 @@
+.bestCreators__heading {
+    display: flex;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.bestCreators__users {
+    display: flex;
+    gap: 38px;
+    flex-wrap: wrap;
+}
+
+.bestCreators__star {
+    transform: rotate(45deg)
+}
