@@ -8,7 +8,7 @@ import { GrClose } from "react-icons/gr";
 import PropTypes from "prop-types";
 
 export default function SignIn(props) {
-  const errorClassName = `signIn__error_${props.remindPassword}`;
+  const errorClassName = `signIn__error signIn__error_${props.remindPassword}`;
   return (
     <div className="signIn">
       <div className="signIn__wrapper">
@@ -63,4 +63,6 @@ SignIn.PropTypes = {
   signUpOnClick: PropTypes.func,
   remindPassword:PropTypes.bool,
 }
-SignIn.defaultProps = {}
+SignIn.defaultProps = {
+  remindPassword: false,
+}

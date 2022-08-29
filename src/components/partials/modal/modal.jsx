@@ -35,6 +35,7 @@ export default function Modal() {
           <SignIn
             crossOnClick={crossClick}
             signUpOnClick={signUp}
+            remindPassword={false}
           />
         </div>
       </div>
