@@ -43,8 +43,8 @@ export default function Input(props) {
         </div>
         <div className={contentClassName}>
           <input
-            // value={inputState}
-            // onChange={handleInputChange}
+            value={props.passwordValue}
+            onChange={(event)=>{props.onInputPasswordOnChange(event.target.value)}}
             placeholder={props.placeholder}
             type={inputType}
             disabled={props.disabled}
@@ -71,8 +71,8 @@ export default function Input(props) {
         </div>
         <div className={contentClassName}>
           <input
-            // value={inputState}
-            // onChange={handleInputChange}
+            value={props.nameValue}
+            onChange={(event)=>{props.onInputNameOnChange(event.target.value)}}
             placeholder={props.placeholder}
             type={"text"}
             disabled={props.disabled}
@@ -88,12 +88,12 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   heading: PropTypes.string,
   remindPassword:PropTypes.bool,
-  /**
-   * Handles function on button click with input content as argument:
-   * `(submit) => alert('submit recieved: ' + submit)`
-   * * Required for Button render
-   */
-  // buttonOnClick: PropTypes.func,
+  remindButtonFunc:PropTypes.func,
+  passwordValue:PropTypes.string,
+  onInputPasswordOnChange:PropTypes.func,
+  nameValue:PropTypes.string,
+  onInputNameOnChange:PropTypes.func,
+
 }
 
 Input.defaultProps = {
@@ -102,5 +102,9 @@ Input.defaultProps = {
   disabled: false,
   heading: undefined,
   remindPassword:false,
-  // buttonOnClick: undefined,
+  remindButtonFunc:undefined,
+  passwordValue:undefined,
+  onInputPasswordOnChange:undefined,
+  nameValue:undefined,
+  onInputNameOnChange:undefined,
 }

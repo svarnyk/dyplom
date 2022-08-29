@@ -34,3 +34,15 @@
 .signUp__signIn {
   gap: 10px;
 }
+
+.signUp__error_true {
+  background-color: #FADCDE;
+  border-radius: 14px;
+  padding: 14px 0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.signUp__error_false {
+  display: none;
+}

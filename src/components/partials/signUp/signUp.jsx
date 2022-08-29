@@ -1,13 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "./signUp.css";
 import Heading from "../../primitives/heading/heading";
 import Input from "../../primitives/input/input";
 import Button from "../../primitives/button/button";
-import { GrClose } from "react-icons/gr";
+import {GrClose} from "react-icons/gr";
 import PropTypes from "prop-types";
 
 export default function SignUp(props) {
+  const [inputNameState, setInputNameState] = useState('')
+  const [inputPasswordState, setInputPasswordState] = useState('')
+  const [inputRepeatPasswordState, setInputRepeatPasswordState] = useState('')
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false)
+  const errorClassName = `signUp__error_${isPasswordCorrect}`;
+
+  function getData () {
+    if (inputPasswordState===inputRepeatPasswordState) {
+      setIsPasswordCorrect(false)
+    }
+    else {setIsPasswordCorrect(true)}
+  }
+
   return (
     <div className="signUp">
       <div className="signUp__wrapper">
@@ -17,13 +30,19 @@ export default function SignUp(props) {
           />
         </div>
         <div className="signUp__heading">
-          <Heading weight={1}>Sign <span style={{ color: "#FF6363" }}>Up</span></Heading>
+          <Heading weight={1}>Sign <span style={{color: "#FF6363"}}>Up</span></Heading>
+        </div>
+        <div className={errorClassName}>
+          <Heading weight={5}><span
+            style={{color: "black", fontWeight: 700}}>Passwords don't match, please try again.</span></Heading>
         </div>
         <div className="signUp__name">
           <Input
             variant={"text"}
             heading={"Name"}
             placeholder={"Type name…"}
+            nameValue={inputNameState}
+            onInputNameOnChange={setInputNameState}
           />
         </div>
         <div className="signUp__password">
@@ -32,6 +51,8 @@ export default function SignUp(props) {
             heading={"Password"}
             placeholder={"Type password…"}
             remindPassword={false}
+            passwordValue={inputPasswordState}
+            onInputPasswordOnChange={setInputPasswordState}
           />
         </div>
         <div className="signUp__repeatPassword">
@@ -40,13 +61,15 @@ export default function SignUp(props) {
             heading={"Repeat Password"}
             placeholder={"Repeat password…"}
             remindPassword={false}
+            passwordValue={inputRepeatPasswordState}
+            onInputPasswordOnChange={setInputRepeatPasswordState}
           />
         </div>
         <div className="signUp__button">
           <Button
             variant={"primary"}
             label={"Sign Up"}
-            onClick={props.buttonOnClick}
+            onClick={getData}
           />
         </div>
         <div className="signUp__signIn">

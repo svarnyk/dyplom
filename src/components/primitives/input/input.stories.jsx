@@ -12,14 +12,14 @@ export default {
       control: {type: "radio"}
     },
     placeholder: string,
-    disabled: { boolean: { action: false } },
+    disabled: {boolean: {action: false}},
     heading: string,
-    remindPassword: { boolean: { action: false } },
-    //   table: {
-    //     defaultValue: { summary: "true" },
-    //   },
-    // },
-    // buttonOnClick: { action: "clicked" },
+    remindPassword: {boolean: {action: false}},
+    remindButtonFunc: {action: "clicked"},
+    passwordValue: string,
+    onInputPasswordOnChange: {action: "changed"},
+    nameValue: string,
+    onInputNameOnChange: {action: "changed"},
   },
 }
 
@@ -39,7 +39,8 @@ Primary.args = {
   disabled: false,
   heading: "Input",
   remindPassword: false,
-  // withButton: true,
-  // buttonLabel: "label",
-  // buttonOnClick: action("submit"),
+  passwordValue:undefined,
+  onInputPasswordOnChange:action("submit"),
+  nameValue:undefined,
+  onInputNameOnChange:action("submit"),
 }
