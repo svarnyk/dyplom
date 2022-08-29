@@ -13,12 +13,23 @@ export default function SignUp(props) {
   const [inputRepeatPasswordState, setInputRepeatPasswordState] = useState('')
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(false)
   const errorClassName = `signUp__error_${isPasswordCorrect}`;
+  let data = {
+    "username": undefined,
+    "password": undefined
+  }
 
-  function getData () {
-    if (inputPasswordState===inputRepeatPasswordState) {
+  function getData() {
+    if (inputPasswordState === inputRepeatPasswordState) {
       setIsPasswordCorrect(false)
+      data = {
+        "username": inputNameState,
+        "password": inputPasswordState
+      }
+      console.log(data)
+      props.registrationData = data
+    } else {
+      setIsPasswordCorrect(true)
     }
-    else {setIsPasswordCorrect(true)}
   }
 
   return (
@@ -86,7 +97,9 @@ export default function SignUp(props) {
 }
 SignUp.PropTypes = {
   crossOnClick: PropTypes.func,
-  buttonOnClick: PropTypes.func,
   signInOnClick: PropTypes.func
 };
-SignUp.defaultProps = {};
+SignUp.defaultProps = {
+  crossOnClick: undefined,
+  signInOnClick: undefined
+};
