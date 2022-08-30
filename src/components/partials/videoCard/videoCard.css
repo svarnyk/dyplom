@@ -1,0 +1,14 @@
+.videoCard {
+  width: 314px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.videoCard__videoName{
+  width: 100%;
+  text-align: center;
+}
+.videoCard__videoDescription{
+  width: 231px;
+  text-align: center;
+}
