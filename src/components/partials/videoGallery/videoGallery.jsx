@@ -15,11 +15,12 @@ export default function VideoGallery(props) {
       videoDescription={video.description}
     />
   );
+  const headingClassName=`${props.heading}'s videos`;
   return (
     <div className="videoGallery">
       <div className="videoGallery__header">
         <div className="videoGallery__heading">
-          <Heading weight={2}>{props.heading}</Heading>
+          <Heading weight={2}>{headingClassName}</Heading>
           <FaYoutube
           size={"20px"}
           color={"#292D32"}

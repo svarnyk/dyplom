@@ -137,6 +137,6 @@ Primary.args = {
       "description": "Нереально крутий трек, коли починаєш під нього працювати, то все ніби саме складається і виходить."
     }
   ],
-  heading: "Chester's videos",
+  heading: "Chester",
   buttonOnClick: action("submit"),
 };
