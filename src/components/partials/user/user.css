@@ -22,3 +22,7 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.user_middle h3, .user_large h1{
+    text-align: center;
+}
