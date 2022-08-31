@@ -2,16 +2,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 1340px;
     margin: 0 50px;
 }
 
 .homePage__heading {
+    display: flex;
     padding-bottom: 20px;
+}
+.homePage__heading h1{
+    text-align: center;
 }
 
 .homePage__greeting {
     padding-bottom: 50px;
+}
+
+.homePage__greeting h5{
+    text-align: center;
 }
 
 .homePage__button {

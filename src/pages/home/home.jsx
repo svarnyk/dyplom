@@ -17,10 +17,10 @@ export default function HomePage(props) {
     >
       <div className="homePage__wrapper">
         <div className="homePage__heading">
-          <Heading weight={1}><span style={{textAlign: "center", overflowWrap: "break-word"}}>Welcome To <span style={{color:"#FF6363"}}>VideoNova</span></span></Heading>
+          <Heading weight={1}>Welcome To <span style={{color:"#FF6363"}}>VideoNova</span></Heading>
         </div>
         <div className="homePage__greeting">
-          <Heading weight={5}><span style={{textAlign: "center"}}>Create videos with a single click. Add subtitles, transcribe audio and more</span></Heading>
+          <Heading weight={5}>Create videos with a single click. Add subtitles, transcribe audio and more</Heading>
         </div>
         <div className="homePage__button">
           <Button
