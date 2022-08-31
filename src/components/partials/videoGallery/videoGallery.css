@@ -1,0 +1,26 @@
+.videoGallery {
+    display: flex;
+    flex-direction: column;
+}
+.videoGallery__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 34px;
+}
+.videoGallery__heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.videoGallery__gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    align-items: flex-start;
+}
