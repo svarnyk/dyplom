@@ -8,6 +8,8 @@
     align-items: center;
     justify-content: space-between;
     padding-bottom: 34px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 .videoGallery__heading {
     display: flex;
@@ -23,4 +25,10 @@
     gap: 28px;
     justify-content: center;
     align-items: flex-start;
+}
+
+@media (max-width: 680px) {
+    .videoGallery__header {
+        justify-content: center;
+    }
 }
