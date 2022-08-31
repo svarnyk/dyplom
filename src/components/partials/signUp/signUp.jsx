@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useCallback, useState } from "react";
 
 import "./signUp.css";
 import Heading from "../../primitives/heading/heading";
@@ -13,22 +13,35 @@ export default function SignUp(props) {
   const [inputRepeatPasswordState, setInputRepeatPasswordState] = useState('')
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(false)
   const errorClassName = `signUp__error_${isPasswordCorrect}`;
+  const [message, setMessage] = useState("");
   let data = {
     "username": undefined,
     "password": undefined
   }
+  const handleButtonClick = useCallback(() => {
+    if (typeof props.buttonOnClick === "function") props.buttonOnClick(data)
+  }, [props.buttonOnClick, data])
 
   function getData() {
-    if (inputPasswordState === inputRepeatPasswordState) {
+    if (inputPasswordState === inputRepeatPasswordState && inputPasswordState.length>0 && inputRepeatPasswordState.length>0 && inputNameState.length>0) {
       setIsPasswordCorrect(false)
       data = {
         "username": inputNameState,
         "password": inputPasswordState
       }
       console.log(data)
-      props.registrationData = data
-    } else {
+      handleButtonClick()
+      // props.registrationData = data
+    }
+    else if (inputPasswordState.length===0 || inputRepeatPasswordState.length===0 || inputNameState.length===0){
       setIsPasswordCorrect(true)
+      setMessage("Please fill out all forms")
+      console.log(message)
+    }
+    else {
+      setIsPasswordCorrect(true)
+      setMessage("Passwords don't match, please try again.")
+      console.log(message)
     }
   }
 
@@ -45,7 +58,7 @@ export default function SignUp(props) {
         </div>
         <div className={errorClassName}>
           <Heading weight={5}><span
-            style={{color: "black", fontWeight: 700}}>Passwords don't match, please try again.</span></Heading>
+            style={{color: "black", fontWeight: 700}}>{message}</span></Heading>
         </div>
         <div className="signUp__name">
           <Input
@@ -96,10 +109,12 @@ export default function SignUp(props) {
   );
 }
 SignUp.PropTypes = {
+  buttonOnClick: PropTypes.func,
   crossOnClick: PropTypes.func,
   signInOnClick: PropTypes.func
 };
 SignUp.defaultProps = {
+  buttonOnClick: undefined,
   crossOnClick: undefined,
   signInOnClick: undefined
 };
