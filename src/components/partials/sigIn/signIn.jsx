@@ -17,11 +17,13 @@ export default function SignIn(props) {
   };
 
   function getData() {
-    data = {
-      "username": inputNameState,
-      "password": inputPasswordState
-    };
-    handleButtonClick();
+    if (inputNameState.length > 0 && inputPasswordState.length) {
+      data = {
+        "username": inputNameState,
+        "password": inputPasswordState
+      };
+      handleButtonClick();
+    }
   }
 
   const handleButtonClick = useCallback(() => {
