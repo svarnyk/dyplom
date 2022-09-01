@@ -4,12 +4,14 @@ import Heading from "../../primitives/heading/heading";
 import Input from "../../primitives/input/input";
 import DescriptionForm from "../../primitives/descriptionForm/descriptionForm";
 import Button from "../../primitives/button/button";
+import Video from "../../primitives/video/video";
 import PropTypes from "prop-types";
 
 export default function AddNewVideo(props) {
   const [inputLinkState, setInputLinkState] = useState('')
   const [inputNameState, setInputNameState] = useState('')
   const [descriptionState, setDescriptionState] = useState('')
+  const [message, setMessage] = useState("");
   let data = {
     "url": undefined,
     "title": undefined,
@@ -17,8 +19,9 @@ export default function AddNewVideo(props) {
     "id": undefined,
     "userId": undefined,
   };
+
   function getData() {
-    if (inputLinkState.length > 0 && inputNameState.length>0 && descriptionState.length>0) {
+    if (inputLinkState.length > 0 && inputNameState.length > 0 && descriptionState.length > 0) {
       data = {
         "url": inputLinkState,
         "title": inputNameState,
@@ -27,6 +30,7 @@ export default function AddNewVideo(props) {
         "userId": "string",
       };
       handleButtonClick();
+      setMessage("Successful");
     }
   }
 
@@ -66,6 +70,15 @@ export default function AddNewVideo(props) {
             onDescriptionOnChange={setDescriptionState}
           />
         </div>
+        <div className="addNewVideo__video">
+          <Video
+            variant={"checkMark"}
+            urlVideo={inputLinkState}
+          />
+        </div>
+        <div className="addNewVideo__message">
+          <Heading weight={2}>{message}</Heading>
+        </div>
         <div className="addNewVideo__buttonBlock">
           <div className="addNewVideo__buttonCansel">
             <Button
@@ -88,10 +101,10 @@ export default function AddNewVideo(props) {
 }
 
 AddNewVideo.PropTypes = {
-  cancelOnClick:PropTypes.func,
+  cancelOnClick: PropTypes.func,
   buttonOnClick: PropTypes.func,
 }
 AddNewVideo.defaultProps = {
-  cancelOnClick:undefined,
+  cancelOnClick: undefined,
   buttonOnClick: undefined,
 }
