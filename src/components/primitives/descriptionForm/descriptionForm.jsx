@@ -16,6 +16,10 @@ export default function DescriptionForm(props) {
           rows={4}
           placeholder={props.placeholder}
           disabled={props.disabled}
+          value={props.descriptionValue}
+          onChange={(event) => {
+            props.onDescriptionOnChange(event.target.value)
+          }}
         ></textarea>
       </label>
     </div>
@@ -26,10 +30,14 @@ DescriptionForm.PropTypes = {
   placeholder: PropTypes.string,
   heading: PropTypes.string,
   disabled: PropTypes.bool,
+  descriptionValue: PropTypes.string,
+  onDescriptionOnChange: PropTypes.func,
 }
 
 DescriptionForm.defaultProps = {
   placeholder: undefined,
   heading: undefined,
-  disabled:false,
+  disabled: false,
+  descriptionValue: undefined,
+  onDescriptionOnChange: undefined,
 }

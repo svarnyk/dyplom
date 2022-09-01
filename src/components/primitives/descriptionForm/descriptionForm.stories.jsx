@@ -1,6 +1,7 @@
 import React from "react";
 import DescriptionForm from "./descriptionForm";
-import {bool, string} from "prop-types";
+import { string } from "prop-types";
+import {action} from "@storybook/addon-actions";
 
 export default {
   title: "Primitives/DescriptionForm",
@@ -9,6 +10,8 @@ export default {
     placeholder: string,
     heading: string,
     disabled: { boolean: { action: false } },
+    descriptionValue: string,
+    onDescriptionOnChange: {action: "changed"},
   }
 }
 
@@ -26,4 +29,6 @@ Primary.args = {
   placeholder: "Type description...",
   heading: "Description",
   disabled: false,
+  descriptionValue: undefined,
+  onDescriptionOnChange: action("submit"),
 }
