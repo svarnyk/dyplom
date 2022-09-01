@@ -10,6 +10,7 @@ export default function VideoCard(props) {
       <div className="videoCard__video">
         <Video
           urlVideo={props.urlVideo}
+          variant={"playButton"}
         />
       </div>
       <div className="videoCard__videoName">
