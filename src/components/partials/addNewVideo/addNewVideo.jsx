@@ -1,13 +1,38 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import "./addNewVideo.css";
 import Heading from "../../primitives/heading/heading";
 import Input from "../../primitives/input/input";
 import DescriptionForm from "../../primitives/descriptionForm/descriptionForm";
 import Button from "../../primitives/button/button";
+import PropTypes from "prop-types";
 
-export default function AddNewVideo() {
+export default function AddNewVideo(props) {
   const [inputLinkState, setInputLinkState] = useState('')
   const [inputNameState, setInputNameState] = useState('')
+  const [descriptionState, setDescriptionState] = useState('')
+  let data = {
+    "url": undefined,
+    "title": undefined,
+    "description": undefined,
+    "id": undefined,
+    "userId": undefined,
+  };
+  function getData() {
+    if (inputLinkState.length > 0 && inputNameState.length>0 && descriptionState.length>0) {
+      data = {
+        "url": inputLinkState,
+        "title": inputNameState,
+        "description": descriptionState,
+        "id": "string",
+        "userId": "string",
+      };
+      handleButtonClick();
+    }
+  }
+
+  const handleButtonClick = useCallback(() => {
+    if (typeof props.buttonOnClick === "function") props.buttonOnClick(data);
+  }, [props.buttonOnClick, data]);
 
   return (
     <div className="addNewVideo">
@@ -37,6 +62,8 @@ export default function AddNewVideo() {
           <DescriptionForm
             heading={"Description"}
             placeholder={"Type description…"}
+            descriptionValue={descriptionState}
+            onDescriptionOnChange={setDescriptionState}
           />
         </div>
         <div className="addNewVideo__buttonBlock">
@@ -44,14 +71,14 @@ export default function AddNewVideo() {
             <Button
               variant={"transparent"}
               label={"Cancel"}
-              // onClick={props.cancelOnClick}
+              onClick={props.cancelOnClick}
             />
           </div>
           <div className="addNewVideo__button">
             <Button
               variant={"primary"}
               label={"Submit"}
-              // onClick={getData}
+              onClick={getData}
             />
           </div>
         </div>
@@ -60,5 +87,11 @@ export default function AddNewVideo() {
   )
 }
 
-AddNewVideo.PropTypes = {}
-AddNewVideo.defaultProps = {}
+AddNewVideo.PropTypes = {
+  cancelOnClick:PropTypes.func,
+  buttonOnClick: PropTypes.func,
+}
+AddNewVideo.defaultProps = {
+  cancelOnClick:undefined,
+  buttonOnClick: undefined,
+}

@@ -1,10 +1,14 @@
 import React from "react";
 import AddNewVideo from "./addNewVideo";
+import {action} from "@storybook/addon-actions";
 
 export default {
   title: "Partials/AddNewVideo",
   Component: AddNewVideo,
-  argTypes: {}
+  argTypes: {
+    buttonOnClick: {action: "clicked"},
+    cancelOnClick: {action: "clicked"},
+  }
 }
 
 function Template(args){
@@ -17,4 +21,7 @@ function Template(args){
 
 export const Primary = Template.bind({})
 
-Primary.args = {}
+Primary.args = {
+  buttonOnClick: action("submit"),
+  cancelOnClick: action("submit"),
+}
