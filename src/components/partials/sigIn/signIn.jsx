@@ -17,7 +17,7 @@ export default function SignIn(props) {
   };
 
   function getData() {
-    if (inputNameState.length > 0 && inputPasswordState.length) {
+    if (inputNameState.length > 0 && inputPasswordState.length>0) {
       data = {
         "username": inputNameState,
         "password": inputPasswordState
