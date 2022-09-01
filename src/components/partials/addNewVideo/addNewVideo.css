@@ -1,0 +1,33 @@
+.addNewVideo__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 644px;
+  background-color: white;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 69px 90px 90px;
+}
+
+.addNewVideo__heading {
+  display: flex;
+  justify-content: center;
+}
+
+.addNewVideo__heading {
+  padding-bottom: 22px;
+}
+
+.addNewVideo__link, .addNewVideo__name {
+  padding-bottom: 30px;
+}
+
+.addNewVideo__description {
+  padding-bottom: 50px;
+}
+
+.addNewVideo__buttonBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
