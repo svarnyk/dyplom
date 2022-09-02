@@ -8,12 +8,12 @@
   padding: 69px 90px 90px;
 }
 
-.addNewVideo__heading {
+.addNewVideo__heading, .addNewVideo__message, .addNewVideo__video {
   display: flex;
   justify-content: center;
 }
 
-.addNewVideo__heading {
+.addNewVideo__heading, .addNewVideo__video {
   padding-bottom: 22px;
 }
 
@@ -21,7 +21,7 @@
   padding-bottom: 30px;
 }
 
-.addNewVideo__description {
+.addNewVideo__description, .addNewVideo__message{
   padding-bottom: 50px;
 }
 
@@ -30,4 +30,12 @@
   align-items: center;
   justify-content: center;
   gap: 50px;
+}
+
+.addNewVideo_notConfirmed .addNewVideo__message, .addNewVideo_notConfirmed .addNewVideo__video, .addNewVideo_notConfirmed .addNewVideo__toVideoButton{
+  display: none;
+}
+
+.addNewVideo_confirmed .addNewVideo__link, .addNewVideo_confirmed .addNewVideo__name, .addNewVideo_confirmed .addNewVideo__description, .addNewVideo_confirmed .addNewVideo__buttonCansel, .addNewVideo_confirmed .addNewVideo__button {
+  display: none;
 }
