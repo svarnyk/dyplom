@@ -1,7 +1,5 @@
 import HomePage from "./home/home"
 import UserProfilePage from "./userProfile/userProfilePage"
-import CategoryPage from "./category"
-import WhichLightPage from "./whichLight"
-import NotFoundPage from "./notFound"
+import NotFoundPage from "./notFound/notFound"
 
-export { HomePage, UserProfilePage, CategoryPage, WhichLightPage, NotFoundPage }
+export { HomePage, UserProfilePage, NotFoundPage }

@@ -1,13 +1,12 @@
-import React from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   HomePage,
-  WhichLightPage,
-  CategoryPage,
   UserProfilePage,
-  NotFoundPage,
-} from "./pages"
-import { Store } from "./store"
+  NotFoundPage
+} from "./pages";
+import { Store } from "./store";
+
 /**
  * @see https://reactrouter.com/docs
  * компонент роутінгу описує як обробляти різни запити
@@ -17,17 +16,16 @@ import { Store } from "./store"
 
 function App() {
   return (
-    <Store>
+    // <Store>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="which" element={<WhichLightPage />} />
           <Route path="profile" element={<UserProfilePage />} />
-          <Route path="category/:id" element={<CategoryPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
-    </Store>
-  )
+    // </Store>
+  );
 }
-export default App
+
+export default App;

@@ -1,5 +1,5 @@
 import React from "react"
-import isInternalLink from "is-internal-link"
+import isInternalLink from "./isInternalLink"
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
 
