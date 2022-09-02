@@ -8,6 +8,7 @@ export default {
   argTypes: {
     buttonOnClick: {action: "clicked"},
     cancelOnClick: {action: "clicked"},
+    toVideoOnClick: {action: "clicked"},
   }
 }
 
@@ -24,4 +25,5 @@ export const Primary = Template.bind({})
 Primary.args = {
   buttonOnClick: action("submit"),
   cancelOnClick: action("submit"),
+  toVideoOnClick: action("submit"),
 }

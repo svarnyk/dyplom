@@ -31,3 +31,11 @@
   justify-content: center;
   gap: 50px;
 }
+
+.addNewVideo_notConfirmed .addNewVideo__message, .addNewVideo_notConfirmed .addNewVideo__video, .addNewVideo_notConfirmed .addNewVideo__toVideoButton{
+  display: none;
+}
+
+.addNewVideo_confirmed .addNewVideo__link, .addNewVideo_confirmed .addNewVideo__name, .addNewVideo_confirmed .addNewVideo__description, .addNewVideo_confirmed .addNewVideo__buttonCansel, .addNewVideo_confirmed .addNewVideo__button {
+  display: none;
+}
