@@ -29,7 +29,7 @@ export default function Modal(props) {
           <AddNewVideo
             cancelOnClick={props.onCancel}
             buttonOnClick={props.addVideoOnClick}
-            toVideoOnClick={props.toVideoOnClick}
+            toVideoOnClick={props.onCancel}
           />
         </div>
       </div>

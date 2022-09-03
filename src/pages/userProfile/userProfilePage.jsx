@@ -4,22 +4,20 @@ import PropTypes from "prop-types";
 import User from "../../components/partials/user/user";
 import VideoGallery from "../../components/partials/videoGallery/videoGallery";
 import "./userProfilePage.css"
+import { useSelector } from "react-redux";
 
 
 export default function UserProfilePage(props) {
+  const userState = useSelector(state => state.user.userInform)
   return (
-    <DefaultLayout
-      isHeaderOpen={props.isHeaderOpen}
-      userName={props.userName}
-      userPicUrl={props.userPicUrl}
-      userPicAlt={props.userPicAlt}>
+    <DefaultLayout>
       <div className="userProfilePage__wrapper">
         <div className="userProfilePage__user">
           <User
             variant={"large"}
-            userName={props.userName}
-            userPicUrl={props.userPicUrl}
-            userPicAlt={props.userPicAlt}
+            userName={userState.userName}
+            userPicUrl={userState.userPic}
+            userPicAlt={userState.userName}
           />
         </div>
         <div className="userProfilePage__gallery">

@@ -1,15 +1,11 @@
 /* eslint-disable */
-import React, {useEffect, useState} from "react";
+import React from "react";
 import DefaultLayout from "../../components/layouts/common/common";
 import "./home.css";
-import PropTypes, {func} from "prop-types";
+import PropTypes from "prop-types";
 import Heading from "../../components/primitives/heading/heading";
 import Button from "../../components/primitives/button/button";
 import BestCreators from "../../components/partials/bestCreators/bestCreators";
-import Modal from "../../components/partials/modal/modal";
-import {useSelector} from "react-redux";
-import {useDispatch} from "react-redux";
-import {visibleModal} from "../../store/modalSlice";
 
 
 export default function HomePage(props) {
@@ -23,16 +19,6 @@ export default function HomePage(props) {
   //   }
   // }
 
-  const modalVisible = useSelector(state => state.modal)
-  const [modalStatus, setModalStatus] = useState(modalVisible.modalStatus.hidden)
-  const [modalVariant, setModalVariant] = useState(modalVisible.modalVariant.signUp)
-  function closeModal() {
-    setModalStatus(modalVisible.modalStatus.hidden)
-  }
-  function openModal() {
-    setModalStatus(modalVisible.modalStatus.active)
-    setModalVariant(modalVisible.modalVariant.signUp)
-  }
   return (
     <DefaultLayout
       isHeaderOpen={props.isHeaderOpen}
@@ -51,7 +37,7 @@ export default function HomePage(props) {
           <Button
             label={"Start Now"}
             variant={"primary"}
-            onClick={openModal}
+            onClick={"./profile"}
           />
         </div>
         <div className="homePage__users">
@@ -60,11 +46,6 @@ export default function HomePage(props) {
           />
         </div>
       </div>
-      <Modal
-        modalVariant={modalVariant}
-        modalStatus ={modalStatus}
-        onCancel={closeModal}
-      />
     </DefaultLayout>
   );
 }

@@ -6,8 +6,12 @@ import Input from "../../primitives/input/input";
 import Button from "../../primitives/button/button";
 import {GrClose} from "react-icons/gr";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import {openModal} from "../../../store/modalSlice";
 
 export default function SignUp(props) {
+  const dispatch =useDispatch()
+  const openPop = () => {dispatch(openModal("signIn"))}
   const [inputNameState, setInputNameState] = useState('')
   const [inputPasswordState, setInputPasswordState] = useState('')
   const [inputRepeatPasswordState, setInputRepeatPasswordState] = useState('')
@@ -31,7 +35,9 @@ export default function SignUp(props) {
       }
       console.log(data)
       handleButtonClick()
-      // props.registrationData = data
+      setInputNameState("")
+      setInputPasswordState("")
+      setInputRepeatPasswordState("")
     }
     else if (inputPasswordState.length===0 || inputRepeatPasswordState.length===0 || inputNameState.length===0){
       setIsPasswordCorrect(true)
@@ -101,7 +107,7 @@ export default function SignUp(props) {
           <Button
             variant={"link"}
             label={"Sign In"}
-            onClick={props.signInOnClick}
+            onClick={openPop}
           />
         </div>
       </div>
@@ -111,10 +117,8 @@ export default function SignUp(props) {
 SignUp.PropTypes = {
   buttonOnClick: PropTypes.func,
   crossOnClick: PropTypes.func,
-  signInOnClick: PropTypes.func
 };
 SignUp.defaultProps = {
   buttonOnClick: undefined,
   crossOnClick: undefined,
-  signInOnClick: undefined
 };

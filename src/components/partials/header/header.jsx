@@ -3,25 +3,36 @@ import Logo from "../../primitives/logo/logo";
 import Button from "../../primitives/button/button";
 import User from "../user/user";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import {useDispatch} from "react-redux";
+import {openModal} from "../../../store/modalSlice";
 
 import "./header.css"
 
-export default function Header(props) {
+export default function Header() {
+  const userState = useSelector(state => state.user.userInform)
+  const headerState = useSelector(state => state.header.isHeaderOpen)
+  const dispatch = useDispatch()
+  const openPop = () => {dispatch(openModal("signUp"))}
   let variant;
   const headerIsOpen = () => {
-    if (props.isHeaderOpen === false) {
+    if (headerState === false) {
       variant = "close"
       return (
-        <Button label={"Sing Up"} variant={"transparent"}/>
+        <Button
+          label={"Sing Up"}
+          variant={"transparent"}
+          onClick={openPop}
+        />
       )
-    } else if (props.isHeaderOpen === true) {
+    } else if (headerState === true) {
       variant = "open"
       return (
         <User
           variant={"small"}
-          userName={props.userName}
-          userPicUrl={props.userPicUrl}
-          userPicAlt={props.userPicAlt}
+          userName={userState.userName}
+          userPicUrl={userState.userPic}
+          userPicAlt={userState.userName}
         />
       )
     }
@@ -31,9 +42,9 @@ export default function Header(props) {
   return (
     <div className={className}>
       <div className="header__wrapper">
-        <div className="header__logo">
+        <a className="header__logo" href={"./"}>
           <Logo color={"blue"}/>
-        </div>
+        </a>
         <div className="header__control">
           {headerIsOpen()}
         </div>
@@ -44,14 +55,8 @@ export default function Header(props) {
 
 Header.PropTypes = {
   isHeaderOpen: PropTypes.bool.isRequired,
-  userName: PropTypes.string,
-  userPicUrl: PropTypes.string,
-  userPicAlt: PropTypes.string,
 }
 
 Header.defaultProps = {
   isHeaderOpen: false,
-  userName: undefined,
-  userPicUrl: undefined,
-  userPicAlt: undefined,
 }

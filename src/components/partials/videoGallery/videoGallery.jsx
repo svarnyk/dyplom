@@ -5,8 +5,12 @@ import Heading from "../../primitives/heading/heading";
 import { FaYoutube } from "react-icons/fa";
 import "./videoGallery.css";
 import PropTypes from "prop-types";
+import {useDispatch} from "react-redux";
+import {openModal} from "../../../store/modalSlice";
 
 export default function VideoGallery(props) {
+  const dispatch = useDispatch()
+  const openPop = () => {dispatch(openModal("addNewVideo"))}
   const content = props.content;
   const result = content.map((video) =>
     <VideoCard
@@ -31,7 +35,7 @@ export default function VideoGallery(props) {
             label={"Add video"}
             variant={"primary"}
             stretch={false}
-            onClick={props.buttonOnClick}
+            onClick={openPop}
           />
         </div>
       </div>
@@ -50,10 +54,8 @@ VideoGallery.PropTypes = {
       description: PropTypes.string
     })),
   heading: PropTypes.string,
-  buttonOnClick: PropTypes.func,
 };
 VideoGallery.defaultProps = {
   content: undefined,
   heading: undefined,
-  buttonOnClick: undefined
 };

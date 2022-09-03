@@ -34,8 +34,15 @@ export default function AddNewVideo(props) {
       handleButtonClick();
       setMessage("Successful");
       setState("confirmed");
+      setInputLinkState("")
+      setInputNameState("")
+      setDescriptionState("")
     }
   }
+function backToStart() {
+  props.toVideoOnClick()
+  setState("notConfirmed")
+}
 
   const handleButtonClick = useCallback(() => {
     if (typeof props.buttonOnClick === "function") props.buttonOnClick(data);
@@ -101,7 +108,7 @@ export default function AddNewVideo(props) {
             <Button
               variant={"primary"}
               label={"To video"}
-              onClick={props.toVideoOnClick}
+              onClick={backToStart}
             />
           </div>
         </div>
