@@ -6,6 +6,16 @@ export default {
   title: "Partials/Modal",
   Component: Modal,
   argTypes: {
+    modalVariant: {
+      options: ["signUp", "signIn", "addNewVideo"],
+      control: {type: "radio"},
+    },
+    modalStatus: {
+      options: ["active", "hidden"],
+      control: {type: "radio"},
+    },
+    onCancel: {action: "clicked"},
+
     signInRemindPas: {boolean: {action: false}},
     addVideoOnClick: {action: "clicked"},
     toVideoOnClick: {action: "clicked"},
@@ -25,6 +35,10 @@ function Template(args) {
 export const ModalSignUp = Template.bind({});
 
 ModalSignUp.args = {
+  modalVariant: "signUp",
+  modalStatus: "active",
+  onCancel: action("submit"),
+
   signInRemindPas: false,
   addVideoOnClick: action("submit"),
   toVideoOnClick: action("submit"),

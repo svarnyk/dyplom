@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+/* eslint-disable */
+import React from "react";
 import SignUp from "../signUp/signUp";
 import SignIn from "../sigIn/signIn";
 import "./modal.css";
@@ -6,64 +7,41 @@ import AddNewVideo from "../addNewVideo/addNewVideo";
 import PropTypes from "prop-types";
 
 export default function Modal(props) {
-  const [modalStatus, setModalStatus] = useState("active");
-  const [signUpStatus, setSignUpStatus] = useState("active");
-  const [signInStatus, setSignInStatus] = useState("hidden");
-  const [addNewVideoStatus, setAddNewVideoStatus] = useState("hidden");
-  const crossClick = () => {
-    setModalStatus("hidden");
-  };
-  const signUp = () => {
-    setSignUpStatus("active")
-    setSignInStatus("hidden")
-    setAddNewVideoStatus("hidden")
-  };
-  const signIn = () => {
-    setSignInStatus("active")
-    setSignUpStatus("hidden")
-    setAddNewVideoStatus("hidden")
-  };
-  const addNewVideo = () => {
-    setAddNewVideoStatus("active")
-    setSignInStatus("hidden")
-    setSignUpStatus("hidden")
-  };
-  const className = `modal modal_${modalStatus}`;
-  const signUpClassName = `modal__signUp modal__signUp_${signUpStatus}`;
-  const signInClassName = `modal__signIn modal__signIn_${signInStatus}`;
-  const addNewVideoClassName = `modal__addNewVideo modal__addNewVideo_${addNewVideoStatus}`;
+  const className = `modal modal_${props.modalStatus} modal_${props.modalVariant}`;
 
   return (
     <div className={className}>
       <div className="modal__wrapper">
-        <div className={signUpClassName}>
+        <div className="modal__signUp">
           <SignUp
-            crossOnClick={crossClick}
-            signInOnClick={signIn}
+            crossOnClick={props.onCancel}
             buttonOnClick={props.signUpOnClick}
           />
         </div>
-        <div className={signInClassName}>
+        <div className="modal__signIn">
           <SignIn
-            crossOnClick={crossClick}
-            signUpOnClick={signUp}
+            crossOnClick={props.onCancel}
             remindPassword={props.signInRemindPas}
             buttonOnClick={props.signInOnClick}
           />
-          <div className={addNewVideoClassName}>
-            <AddNewVideo
-              cancelOnClick={crossClick}
-              buttonOnClick={props.addVideoOnClick}
-              toVideoOnClick={props.toVideoOnClick}
-            />
-          </div>
+        </div>
+        <div className="modal__addNewVideo">
+          <AddNewVideo
+            cancelOnClick={props.onCancel}
+            buttonOnClick={props.addVideoOnClick}
+            toVideoOnClick={props.toVideoOnClick}
+          />
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 Modal.PropTypes = {
+  modalVariant: PropTypes.oneOf(["signUp", "signIn", "addNewVideo"]),
+  modalStatus: PropTypes.oneOf(["active", "hidden"]),
+  onCancel: PropTypes.func,
+
   addVideoOnClick: PropTypes.func,
   toVideoOnClick: PropTypes.func,
   signInOnClick: PropTypes.func,
@@ -71,6 +49,10 @@ Modal.PropTypes = {
   signInRemindPas: PropTypes.bool,
 };
 Modal.defaultProps = {
+  modalVariant: "signUp",
+  modalStatus: "hidden",
+  onCancel: undefined,
+
   signInRemindPas: false,
   addVideoOnClick: undefined,
   toVideoOnClick: undefined,

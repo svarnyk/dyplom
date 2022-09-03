@@ -11,22 +11,12 @@
     justify-content: center;
 }
 
-.modal__wrapper {
-
-}
-
 .modal_hidden {
     display: none;
 }
 
-.modal__signUp_hidden {
-    display: none;
-}
+.modal_signUp .modal__signIn, .modal_signUp .modal__addNewVideo {display: none;}
+.modal_signIn .modal__signUp, .modal_signIn .modal__addNewVideo {display: none;}
+.modal_addNewVideo .modal__signUp, .modal_addNewVideo .modal__signIn {display: none;}
 
-.modal__signIn_hidden {
-    display: none;
-}
 
-.modal__addNewVideo_hidden {
-  display: none;
-}
