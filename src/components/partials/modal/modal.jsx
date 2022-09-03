@@ -49,9 +49,9 @@ Modal.PropTypes = {
   signInRemindPas: PropTypes.bool,
 };
 Modal.defaultProps = {
-  modalVariant: "signUp",
-  modalStatus: "hidden",
-  onCancel: undefined,
+  // modalVariant: "signUp",
+  // modalStatus: "hidden",
+  // onCancel: undefined,
 
   signInRemindPas: false,
   addVideoOnClick: undefined,

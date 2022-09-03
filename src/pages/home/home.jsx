@@ -1,26 +1,38 @@
 /* eslint-disable */
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import DefaultLayout from "../../components/layouts/common/common";
 import "./home.css";
-import PropTypes from "prop-types";
+import PropTypes, {func} from "prop-types";
 import Heading from "../../components/primitives/heading/heading";
 import Button from "../../components/primitives/button/button";
 import BestCreators from "../../components/partials/bestCreators/bestCreators";
 import Modal from "../../components/partials/modal/modal";
+import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {visibleModal} from "../../store/modalSlice";
 
 
 export default function HomePage(props) {
-  const[users, setUsers] = useState([]);
-  async function loadUsers() {
-    const server = "https://wonderful-app-lmk4d.cloud.serverless.com/user";
-    const response = await fetch(server, { method: "GET" });
-    const responseAnswer = await response.json();
-    if (response.ok) {
-      setUsers(responseAnswer);
-    }
+  // const[users, setUsers] = useState([]);
+  // async function loadUsers() {
+  //   const server = "https://wonderful-app-lmk4d.cloud.serverless.com/user";
+  //   const response = await fetch(server, { method: "GET" });
+  //   const responseAnswer = await response.json();
+  //   if (response.ok) {
+  //     setUsers(responseAnswer);
+  //   }
+  // }
+
+  const modalVisible = useSelector(state => state.modal)
+  const [modalStatus, setModalStatus] = useState(modalVisible.modalStatus.hidden)
+  const [modalVariant, setModalVariant] = useState(modalVisible.modalVariant.signUp)
+  function closeModal() {
+    setModalStatus(modalVisible.modalStatus.hidden)
   }
-
-
+  function openModal() {
+    setModalStatus(modalVisible.modalStatus.active)
+    setModalVariant(modalVisible.modalVariant.signUp)
+  }
   return (
     <DefaultLayout
       isHeaderOpen={props.isHeaderOpen}
@@ -30,7 +42,7 @@ export default function HomePage(props) {
     >
       <div className="homePage__wrapper">
         <div className="homePage__heading">
-          <Heading weight={1}>Welcome To <span style={{ color: "#FF6363" }}>VideoNova</span></Heading>
+          <Heading weight={1}>Welcome To <span style={{color: "#FF6363"}}>VideoNova</span></Heading>
         </div>
         <div className="homePage__greeting">
           <Heading weight={5}>Create videos with a single click. Add subtitles, transcribe audio and more</Heading>
@@ -39,7 +51,7 @@ export default function HomePage(props) {
           <Button
             label={"Start Now"}
             variant={"primary"}
-            onClick={props.homeButtonOnClick}
+            onClick={openModal}
           />
         </div>
         <div className="homePage__users">
@@ -48,7 +60,11 @@ export default function HomePage(props) {
           />
         </div>
       </div>
-      {/*<Modal />*/}
+      <Modal
+        modalVariant={modalVariant}
+        modalStatus ={modalStatus}
+        onCancel={closeModal}
+      />
     </DefaultLayout>
   );
 }

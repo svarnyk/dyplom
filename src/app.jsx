@@ -5,7 +5,7 @@ import {
   UserProfilePage,
   NotFoundPage
 } from "./pages";
-import { Store } from "./store";
+// import { Store } from "./store";
 
 /**
  * @see https://reactrouter.com/docs

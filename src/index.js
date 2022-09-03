@@ -1,15 +1,19 @@
 import React from "react"
-import { createRoot } from "react-dom/client"
+import {createRoot} from "react-dom/client"
 import App from "./app"
 import reportWebVitals from "./reportWebVitals"
 import StyleLoader from "./styleLoader"
+import {Provider} from "react-redux";
+import store from "./store/index";
 
 const app = createRoot(document.getElementById("root"))
 
 app.render(
   <React.StrictMode>
-    <StyleLoader />
-    <App />
+    {/*<StyleLoader />*/}
+    <Provider store={store}>
+      <App/>
+    </Provider>
   </React.StrictMode>
 )
 
