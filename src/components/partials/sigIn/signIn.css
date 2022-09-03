@@ -12,6 +12,7 @@
   position: relative;
   left: 498px;
   bottom: 29px;
+  cursor: pointer;
 }
 
 .signIn__heading, .signIn__button, .signIn__signUp {
