@@ -39,16 +39,16 @@ export default function HomePage(props) {
           <Button
             label={"Start Now"}
             variant={"primary"}
-            onClick={loadUsers}
+            onClick={props.homeButtonOnClick}
           />
         </div>
         <div className="homePage__users">
           <BestCreators
-            content={users}
+            content={props.content}
           />
         </div>
       </div>
-      <Modal />
+      {/*<Modal />*/}
     </DefaultLayout>
   );
 }
