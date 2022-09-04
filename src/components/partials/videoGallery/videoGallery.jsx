@@ -5,26 +5,34 @@ import Heading from "../../primitives/heading/heading";
 import { FaYoutube } from "react-icons/fa";
 import "./videoGallery.css";
 import PropTypes from "prop-types";
-import {useDispatch, useSelector} from "react-redux";
-import {openModal} from "../../../store/modalSlice";
-import {fetchVideos} from "../../../store/videosSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { openModal } from "../../../store/modalSlice";
+import { fetchVideos } from "../../../store/videosSlice";
 
 export default function VideoGallery(props) {
-  const dispatch = useDispatch()
-  const openPop = () => {dispatch(openModal("addNewVideo"))}
+  const dispatch = useDispatch();
+  const openPop = () => {
+    dispatch(openModal("addNewVideo"));
+  };
   const content = useSelector(state => state.videos.content);
-  const result = content.map((video) =>
+  const userStateId = useSelector(state => state.user.userInform.id);
+  let selectVideos = content.filter(function(video) {
+    return video.userId === userStateId;
+  });
+
+  const result = selectVideos.map((video) =>
     <VideoCard
       urlVideo={video.url}
       videoName={video.title}
       videoDescription={video.description}
     />
   );
-  const headingClassName=`${props.heading}'s videos`;
 
-  useEffect(()=>{
-    dispatch(fetchVideos())
-  },[dispatch])
+  const headingClassName = `${props.heading}'s videos`;
+
+  useEffect(() => {
+    dispatch(fetchVideos());
+  }, [dispatch]);
 
   return (
     <div className="videoGallery">
@@ -32,8 +40,8 @@ export default function VideoGallery(props) {
         <div className="videoGallery__heading">
           <Heading weight={2}>{headingClassName}</Heading>
           <FaYoutube
-          size={"20px"}
-          color={"#292D32"}
+            size={"20px"}
+            color={"#292D32"}
           />
         </div>
         <div className="videoGallery__button">
@@ -53,8 +61,8 @@ export default function VideoGallery(props) {
 }
 
 VideoGallery.PropTypes = {
-  heading: PropTypes.string,
+  heading: PropTypes.string
 };
 VideoGallery.defaultProps = {
-  heading: undefined,
+  heading: undefined
 };

@@ -5,12 +5,13 @@ import "./home.css";
 import Heading from "../../components/primitives/heading/heading";
 import Button from "../../components/primitives/button/button";
 import BestCreators from "../../components/partials/bestCreators/bestCreators";
-import {useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../store/modalSlice";
 
 
 export default function HomePage() {
-  const userId = useSelector(state => state.user.userInform.id)
-  const profilePath = `profile/${userId}`;
+  const dispatch = useDispatch()
+  const openPop = () => {dispatch(openModal("signUp"))}
   return (
     <DefaultLayout>
       <div className="homePage__wrapper">
@@ -24,7 +25,7 @@ export default function HomePage() {
           <Button
             label={"Start Now"}
             variant={"primary"}
-            onClick={profilePath}
+            onClick={openPop}
           />
         </div>
         <div className="homePage__users">
