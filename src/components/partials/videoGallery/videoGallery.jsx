@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import VideoCard from "../videoCard/videoCard";
 import Button from "../../primitives/button/button";
 import Heading from "../../primitives/heading/heading";
 import { FaYoutube } from "react-icons/fa";
 import "./videoGallery.css";
 import PropTypes from "prop-types";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {openModal} from "../../../store/modalSlice";
+import {fetchVideos} from "../../../store/videosSlice";
 
 export default function VideoGallery(props) {
   const dispatch = useDispatch()
   const openPop = () => {dispatch(openModal("addNewVideo"))}
-  const content = props.content;
+  const content = useSelector(state => state.videos.content);
   const result = content.map((video) =>
     <VideoCard
       urlVideo={video.url}
@@ -20,6 +21,11 @@ export default function VideoGallery(props) {
     />
   );
   const headingClassName=`${props.heading}'s videos`;
+
+  useEffect(()=>{
+    dispatch(fetchVideos())
+  },[dispatch])
+
   return (
     <div className="videoGallery">
       <div className="videoGallery__header">
@@ -47,15 +53,8 @@ export default function VideoGallery(props) {
 }
 
 VideoGallery.PropTypes = {
-  content: PropTypes.arrayOf(
-    PropTypes.shape({
-      url: PropTypes.string,
-      title: PropTypes.string,
-      description: PropTypes.string
-    })),
   heading: PropTypes.string,
 };
 VideoGallery.defaultProps = {
-  content: undefined,
   heading: undefined,
 };
