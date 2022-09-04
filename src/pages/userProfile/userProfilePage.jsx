@@ -16,7 +16,7 @@ export default function UserProfilePage() {
             variant={"large"}
             userName={userState.userName}
             userPicUrl={userState.userPic}
-            userPicAlt={userState.userName}
+            userPicAlt={userState.id}
           />
         </div>
         <div className="userProfilePage__gallery">

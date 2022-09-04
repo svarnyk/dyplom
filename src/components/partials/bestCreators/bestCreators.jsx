@@ -5,6 +5,8 @@ import {GiFallingStar} from "react-icons/gi";
 import "./bestCreators.css";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchUsers} from "../../../store/usersSlice";
+import {useNavigate} from "react-router-dom";
+import {passUserInfo} from "../../../store/userSlice";
 
 export default function BestCreators() {
   const dispatch = useDispatch();
@@ -14,12 +16,18 @@ export default function BestCreators() {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-
-
+  let navigate = useNavigate();
+  function getUserInfo(userId) {
+    let user = content.find(user=>user.id===userId)
+    console.log(user)
+    navigate(`/profile/${userId}`)
+    dispatch(passUserInfo(user))
+  }
   const result = content.map((user) => <CardUser
     userName={user.userName}
     userPicUrl={user.userPic}
-    userPicAlt={user.userName}
+    userPicAlt={user.id}
+    onClick={()=>{getUserInfo(user.id)}}
     videosCount={getRandomIntInclusive(10, 150)}
     likesCount={getRandomIntInclusive(100, 10000)}
   />);

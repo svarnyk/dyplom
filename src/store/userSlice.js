@@ -13,13 +13,13 @@ const userSlice = createSlice({
       }
     },
     reducers:{
-      getUserInfo(state, action) {
+      passUserInfo(state, action) {
         state.userInform = action.payload
       }
     }
   }
 );
 
-export const {getUserInfo} = userSlice.actions;
+export const {passUserInfo} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -32,7 +32,7 @@ export default function Header() {
           variant={"small"}
           userName={userState.userName}
           userPicUrl={userState.userPic}
-          userPicAlt={userState.userName}
+          userPicAlt={userState.id}
         />
       )
     }
@@ -42,7 +42,7 @@ export default function Header() {
   return (
     <div className={className}>
       <div className="header__wrapper">
-        <a className="header__logo" href={"./"}>
+        <a className="header__logo" href={"../"}>
           <Logo color={"blue"}/>
         </a>
         <div className="header__control">
