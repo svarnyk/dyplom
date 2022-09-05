@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
 import "./signUp.css";
 import Heading from "../../primitives/heading/heading";
@@ -8,6 +8,7 @@ import {GrClose} from "react-icons/gr";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import {openModal} from "../../../store/modalSlice";
+import { sendRegUserData } from "../../../store/regUserSlice";
 
 export default function SignUp(props) {
   const dispatch =useDispatch()
@@ -22,9 +23,6 @@ export default function SignUp(props) {
     "username": undefined,
     "password": undefined
   }
-  const handleButtonClick = useCallback(() => {
-    if (typeof props.buttonOnClick === "function") props.buttonOnClick(data)
-  }, [props.buttonOnClick, data])
 
   function getData() {
     if (inputPasswordState === inputRepeatPasswordState && inputPasswordState.length>0 && inputRepeatPasswordState.length>0 && inputNameState.length>0) {
@@ -34,7 +32,7 @@ export default function SignUp(props) {
         "password": inputPasswordState
       }
       console.log(data)
-      handleButtonClick()
+      dispatch(sendRegUserData(data))
       setInputNameState("")
       setInputPasswordState("")
       setInputRepeatPasswordState("")
