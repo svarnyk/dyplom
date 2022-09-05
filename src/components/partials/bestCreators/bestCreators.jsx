@@ -20,7 +20,7 @@ export default function BestCreators() {
   function getUserInfo(userId) {
     let user = content.find(user=>user.id===userId)
     console.log(user)
-    navigate(`/profile/${userId}`)
+    navigate(`/profile`)
     dispatch(passUserInfo(user))
   }
   const result = content.map((user) => <CardUser

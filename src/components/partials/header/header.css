@@ -14,6 +14,10 @@
 .header__logo {
   width: 26px;
   padding-right: 20px;
+  cursor: pointer;
+}
+.header__control{
+  cursor: pointer;
 }
 @media screen and (max-width: 768px) {
   .header__wrapper{

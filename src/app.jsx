@@ -6,7 +6,6 @@ import {
   NotFoundPage
 } from "./pages";
 
-import {useSelector} from "react-redux";
 
 /**
  * @see https://reactrouter.com/docs
@@ -16,13 +15,11 @@ import {useSelector} from "react-redux";
  */
 
 function App() {
-  const userId = useSelector(state => state.user.userInform.id)
-  const profilePath = `profile/:${userId}`;
   return (
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path={profilePath} element={<UserProfilePage/>} />
+          <Route path="/profile" element={<UserProfilePage/>} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
