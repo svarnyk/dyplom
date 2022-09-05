@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
 import "./signIn.css";
 import Heading from "../../primitives/heading/heading";
@@ -8,11 +8,11 @@ import { GrClose } from "react-icons/gr";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import {openModal} from "../../../store/modalSlice";
-import { passUserData } from "../../../store/authUserSlice";
 import {sendAuthUserData} from "../../../store/authUserSlice";
 
 export default function SignIn(props) {
   const dispatch =useDispatch()
+  const userToken =  useSelector(state => state.authUser.userInform)
   const openPop = () => {dispatch(openModal("signUp"))}
   const [inputNameState, setInputNameState] = useState("");
   const [inputPasswordState, setInputPasswordState] = useState("");

@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useState} from "react";
 import "./addNewVideo.css";
 import Heading from "../../primitives/heading/heading";
 import Input from "../../primitives/input/input";
@@ -6,7 +6,7 @@ import DescriptionForm from "../../primitives/descriptionForm/descriptionForm";
 import Button from "../../primitives/button/button";
 import Video from "../../primitives/video/video";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { sendVideoData } from "../../../store/videoSlice";
 
 export default function AddNewVideo(props) {
@@ -15,8 +15,8 @@ export default function AddNewVideo(props) {
   const [inputNameState, setInputNameState] = useState('');
   const [descriptionState, setDescriptionState] = useState('');
   const [message, setMessage] = useState("");
-  const [state, setState] = useState("notConfirmed");
-  const className = `addNewVideo addNewVideo_${state}`;
+  const [state1, setState1] = useState("notConfirmed");
+  const className = `addNewVideo addNewVideo_${state1}`;
   let data = {
     "url": undefined,
     "title": undefined,
@@ -35,7 +35,7 @@ export default function AddNewVideo(props) {
       console.log(data)
       dispatch(sendVideoData(data))
       setMessage("Successful");
-      setState("confirmed");
+      setState1("confirmed");
       // setInputLinkState("")
       // setInputNameState("")
       // setDescriptionState("")
@@ -43,7 +43,7 @@ export default function AddNewVideo(props) {
   }
 function backToStart() {
   props.toVideoOnClick()
-  setState("notConfirmed")
+  setState1("notConfirmed")
 }
 
 
