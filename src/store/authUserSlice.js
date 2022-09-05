@@ -18,8 +18,9 @@ export const sendAuthUserData = createAsyncThunk(
       }
 
       const answer = await response.json();
-      console.log(answer);
+      console.log(answer.authToken);
       dispatch(passUserInfo(answer))
+      dispatch(passUserToken(answer.authToken))
       dispatch(closeModal())
       dispatch(activeHeader())
     } catch (error) {
@@ -34,6 +35,7 @@ const authUserSlice = createSlice({
   initialState: {
     userData: {},
     userInform: {},
+    userToken: null,
     authStatus: null,
     error: null,
     remindPassword: false
@@ -44,7 +46,10 @@ const authUserSlice = createSlice({
     },
     passUserInfo(state, action) {
       state.userInform = action.payload;
-    }
+    },
+    passUserToken(state, action) {
+      state.userToken = action.payload;
+    },
   },
   extraReducers: {
     [sendAuthUserData.pending]: (state) =>{
@@ -64,5 +69,5 @@ const authUserSlice = createSlice({
     },
   }
 });
-export const { passUserData, passUserInfo } = authUserSlice.actions;
+export const { passUserData, passUserInfo, passUserToken } = authUserSlice.actions;
 export default authUserSlice.reducer;
