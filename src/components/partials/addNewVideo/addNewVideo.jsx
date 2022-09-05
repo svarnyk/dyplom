@@ -6,8 +6,11 @@ import DescriptionForm from "../../primitives/descriptionForm/descriptionForm";
 import Button from "../../primitives/button/button";
 import Video from "../../primitives/video/video";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { sendVideoData } from "../../../store/videoSlice";
 
 export default function AddNewVideo(props) {
+  const dispatch =useDispatch()
   const [inputLinkState, setInputLinkState] = useState('');
   const [inputNameState, setInputNameState] = useState('');
   const [descriptionState, setDescriptionState] = useState('');
@@ -28,15 +31,14 @@ export default function AddNewVideo(props) {
         "url": inputLinkState,
         "title": inputNameState,
         "description": descriptionState,
-        "id": "string",
-        "userId": "string",
       };
-      handleButtonClick();
+      console.log(data)
+      dispatch(sendVideoData(data))
       setMessage("Successful");
       setState("confirmed");
-      setInputLinkState("")
-      setInputNameState("")
-      setDescriptionState("")
+      // setInputLinkState("")
+      // setInputNameState("")
+      // setDescriptionState("")
     }
   }
 function backToStart() {
@@ -44,9 +46,6 @@ function backToStart() {
   setState("notConfirmed")
 }
 
-  const handleButtonClick = useCallback(() => {
-    if (typeof props.buttonOnClick === "function") props.buttonOnClick(data);
-  }, [props.buttonOnClick, data]);
 
   return (
     <div className={className}>

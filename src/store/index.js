@@ -6,6 +6,7 @@ import videosSlice from "./videosSlice";
 import usersSlice from "./usersSlice";
 import authUserSlice from "./authUserSlice";
 import regUserSlice from "./regUserSlice";
+import videoSlice from "./videoSlice";
 
 export default configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
     videos: videosSlice,
     authUser: authUserSlice,
     regUser: regUserSlice,
+    video: videoSlice,
   },
 })
