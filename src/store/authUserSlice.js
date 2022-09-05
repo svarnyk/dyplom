@@ -17,6 +17,7 @@ export const sendAuthUserData = createAsyncThunk(
 
       const answer = await response.json();
       console.log(answer);
+      dispatch(passUserInfo(answer))
     } catch (error) {
       console.log(error.message);
       return rejectWithValue(error.message);

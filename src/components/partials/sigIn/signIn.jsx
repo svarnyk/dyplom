@@ -25,12 +25,9 @@ export default function SignIn(props) {
   function getData() {
     if (inputNameState.length > 0 && inputPasswordState.length>0) {
       data = {
-        // "username": "Vitalii Hrozynskyi",
-        // "password": "SuperStrongPassword"
         "username": inputNameState,
         "password": inputPasswordState
       };
-      // handleButtonClick();
       console.log(data)
       dispatch(sendAuthUserData(data))
       setInputNameState("")
@@ -38,9 +35,6 @@ export default function SignIn(props) {
     }
   }
 
-  // const handleButtonClick = useCallback(() => {
-  //   if (typeof props.buttonOnClick === "function") props.buttonOnClick(data);
-  // }, [props.buttonOnClick, data]);
   return (
     <div className="signIn">
       <div className="signIn__wrapper">
