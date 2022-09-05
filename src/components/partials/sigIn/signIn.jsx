@@ -6,8 +6,10 @@ import Input from "../../primitives/input/input";
 import Button from "../../primitives/button/button";
 import { GrClose } from "react-icons/gr";
 import PropTypes from "prop-types";
-import {useDispatch} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {openModal} from "../../../store/modalSlice";
+import { passUserData } from "../../../store/authUserSlice";
+import {sendAuthUserData} from "../../../store/authUserSlice";
 
 export default function SignIn(props) {
   const dispatch =useDispatch()
@@ -23,18 +25,22 @@ export default function SignIn(props) {
   function getData() {
     if (inputNameState.length > 0 && inputPasswordState.length>0) {
       data = {
+        // "username": "Vitalii Hrozynskyi",
+        // "password": "SuperStrongPassword"
         "username": inputNameState,
         "password": inputPasswordState
       };
-      handleButtonClick();
+      // handleButtonClick();
+      console.log(data)
+      dispatch(sendAuthUserData(data))
       setInputNameState("")
       setInputPasswordState("")
     }
   }
 
-  const handleButtonClick = useCallback(() => {
-    if (typeof props.buttonOnClick === "function") props.buttonOnClick(data);
-  }, [props.buttonOnClick, data]);
+  // const handleButtonClick = useCallback(() => {
+  //   if (typeof props.buttonOnClick === "function") props.buttonOnClick(data);
+  // }, [props.buttonOnClick, data]);
   return (
     <div className="signIn">
       <div className="signIn__wrapper">
