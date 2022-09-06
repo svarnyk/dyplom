@@ -12,6 +12,7 @@ export default function Button({
   disabled,
   children,
   label,
+  spinner,
   ...props
 }) {
   // defining button class
@@ -22,6 +23,7 @@ export default function Button({
 
   if (disabled) buttonClasses.push("button_disabled")
   if (stretch) buttonClasses.push("button_stretch")
+  if (spinner) buttonClasses.push("button_spinner")
   return (
     <AdaptiveLink
       className={buttonClasses.join(" ")}
@@ -29,6 +31,7 @@ export default function Button({
       {...props}
     >
       {children || label}
+      <div className="button__spinner"></div>
     </AdaptiveLink>
   )
 }
@@ -69,6 +72,7 @@ Button.propTypes = {
    * Internal links will be rendered with Link component.
    */
   onClick: PropTypes.oneOf([PropTypes.func, PropTypes.string]),
+  spinner: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -79,4 +83,5 @@ Button.defaultProps = {
   stretch: false,
   disabled: false,
   onClick: undefined,
+  spinner: false,
 }

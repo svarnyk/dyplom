@@ -8,6 +8,7 @@ export default {
     label: "Button",
     stretch: { boolean: { action: false } },
     disabled: { boolean: { action: false } },
+    spinner: { boolean: { action: false } },
     variant: {
       options: ["primary", "transparent", "link"],
       control: { type: "radio" },

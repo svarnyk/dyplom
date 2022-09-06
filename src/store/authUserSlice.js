@@ -38,7 +38,8 @@ const authUserSlice = createSlice({
     userToken: null,
     authStatus: null,
     error: null,
-    remindPassword: false
+    remindPassword: false,
+    spinnerState: false
   },
   reducers: {
     passUserData(state, action) {
@@ -56,16 +57,19 @@ const authUserSlice = createSlice({
       state.authStatus = "loading"
       state.error = null
       state.remindPassword = false
+      state.spinnerState = true
     },
     [sendAuthUserData.fulfilled]: (state) =>{
       state.authStatus = "resolved"
       state.error = null
       state.remindPassword = false
+      state.spinnerState = false
     },
     [sendAuthUserData.rejected]: (state,action) =>{
       state.authStatus = "rejected"
       state.error = action.payload
       state.remindPassword = true
+      state.spinnerState = false
     },
   }
 });

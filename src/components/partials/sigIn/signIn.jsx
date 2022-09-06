@@ -12,7 +12,7 @@ import {sendAuthUserData} from "../../../store/authUserSlice";
 
 export default function SignIn(props) {
   const dispatch =useDispatch()
-  const userToken =  useSelector(state => state.authUser.userInform)
+  const spinnerState = useSelector(state => state.authUser.spinnerState)
   const openPop = () => {dispatch(openModal("signUp"))}
   const [inputNameState, setInputNameState] = useState("");
   const [inputPasswordState, setInputPasswordState] = useState("");
@@ -73,6 +73,7 @@ export default function SignIn(props) {
             variant={"primary"}
             label={"Sign In"}
             onClick={getData}
+            spinner={spinnerState}
           />
         </div>
         <div className="signIn__signUp">
