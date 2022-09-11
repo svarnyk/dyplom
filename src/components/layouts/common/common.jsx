@@ -7,13 +7,13 @@ import "./common.css";
 import Modal from "../../partials/modal/modal";
 import {useSelector} from "react-redux";
 import {useDispatch} from "react-redux";
-import { closeModal} from "../../../store/modalSlice";
+import {closeModal, selectModalStatus, selectModalVariant} from "../../../store/modules/modal";
 
 export default function DefaultLayout(props) {
   const dispatch = useDispatch()
   function cleverPopup(){
-    const isVisible = useSelector (state => state.modal.modalStatus)
-    const componentName = useSelector (state => state.modal.modalVariant)
+    const isVisible = useSelector (selectModalStatus)
+    const componentName = useSelector (selectModalVariant)
 
     function handleClose(){
       console.log("тут колись буде екшон");

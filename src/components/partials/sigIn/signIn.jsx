@@ -7,8 +7,8 @@ import Button from "../../primitives/button/button";
 import { GrClose } from "react-icons/gr";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import {openModal} from "../../../store/modalSlice";
-import {sendAuthUserData} from "../../../store/authUserSlice";
+import {openModal} from "../../../store/modules/modal";
+import {sendAuthUserData} from "../../../store/modules/authUser";
 
 export default function SignIn(props) {
   const dispatch =useDispatch()

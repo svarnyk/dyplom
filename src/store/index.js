@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
-import modalSlice from "./modalSlice"
-import headerSlice from "./headerSlice"
-import userSlice from "./userSlice";
-import videosSlice from "./videosSlice";
-import usersSlice from "./usersSlice";
-import authUserSlice from "./authUserSlice";
-import regUserSlice from "./regUserSlice";
+import modalSlice from "./modules/modal/modal.store"
+import headerSlice from "./modules/header/header.store"
+import userSlice from "./modules/user/user.store";
+import videosSlice from "./modules/videosList/videosList.store";
+import usersSlice from "./modules/usersList/usersList.store";
+import authUserSlice from "./modules/authUser/authUser.store";
+import regUserSlice from "./modules/regUser/regUser.store";
 import videoSlice from "./videoSlice";
 
 export default configureStore({

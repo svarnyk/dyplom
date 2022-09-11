@@ -2,19 +2,23 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
 export const fetchVideos = createAsyncThunk(
   "videos/fetchVideos",
-  async function () {
-    const response = await fetch("https://wonderful-app-lmk4d.cloud.serverless.com/video")
-
-    const data = response.json()
-
-    return data
+  async function (_,{rejectWithValue}) {
+    try {
+      const response = await fetch("https://wonderful-app-lmk4d.cloud.serverless.com/video", {method: "GET"})
+      if (!response.ok) {
+        throw new Error("Server error")
+      }
+      return response.json()
+    } catch (error) {
+      rejectWithValue(error.message)
+    }
   }
 )
 
 const videosSlice = createSlice({
   name: "videos",
   initialState: {
-    content: [],
+    videosList: [],
     status: null,
     error: null,
   },
@@ -26,8 +30,12 @@ const videosSlice = createSlice({
     },
     [fetchVideos.fulfilled]: (state, action) => {
       state.status = "resolved"
-      state.content = action.payload
+      state.videosList = action.payload
       state.error = null
+    },
+    [fetchVideos.rejected]: (state, action) => {
+      state.status = "rejected"
+      state.error = action.payload
     },
   },
 })

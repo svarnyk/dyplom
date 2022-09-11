@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import VideoCard from "../videoCard/videoCard";
 import Button from "../../primitives/button/button";
 import Heading from "../../primitives/heading/heading";
@@ -6,21 +6,24 @@ import { FaYoutube } from "react-icons/fa";
 import "./videoGallery.css";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../../../store/modalSlice";
-import { fetchVideos } from "../../../store/videosSlice";
+import { openModal } from "../../../store/modules/modal";
+import { selectVideos } from "../../../store/modules/videosList";
+import {selectUserId} from "../../../store/modules/user";
+import {selectHeaderStatus} from "../../../store/modules/header";
 
 export default function VideoGallery(props) {
   const dispatch = useDispatch();
   const openPop = () => {
     dispatch(openModal("addNewVideo"));
   };
-  const content = useSelector(state => state.videos.content);
-  const userStateId = useSelector(state => state.user.userInform.id);
-  let selectVideos = content.filter(function(video) {
+  const content = useSelector(selectVideos);
+  const userStateId = useSelector(selectUserId);
+  const headerStatus = useSelector(selectHeaderStatus)
+  let selectVideoss = content.filter(function(video) {
     return video.userId === userStateId;
   });
 
-  const result = selectVideos.map((video) =>
+  const result = selectVideoss.map((video) =>
     <VideoCard
       urlVideo={video.url}
       videoName={video.title}
@@ -29,11 +32,7 @@ export default function VideoGallery(props) {
   );
 
   const headingClassName = `${props.heading}'s videos`;
-
-  useEffect(() => {
-    dispatch(fetchVideos());
-  }, [dispatch]);
-
+  let buttonStatus = !headerStatus;
   return (
     <div className="videoGallery">
       <div className="videoGallery__header">
@@ -50,6 +49,7 @@ export default function VideoGallery(props) {
             variant={"primary"}
             stretch={false}
             onClick={openPop}
+            disabled={buttonStatus}
           />
         </div>
       </div>

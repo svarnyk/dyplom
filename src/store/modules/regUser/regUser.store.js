@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { closeModal } from "./modalSlice";
+import { closeModal } from "../modal";
 
 export const sendRegUserData = createAsyncThunk(
   "regUser/sendRegUserData",

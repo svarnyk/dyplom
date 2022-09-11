@@ -5,15 +5,24 @@ import User from "../user/user";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
-import {openModal} from "../../../store/modalSlice";
+import {openModal} from "../../../store/modules/modal";
 
 import "./header.css"
 import { useNavigate } from "react-router-dom";
-import { passUserInfo } from "../../../store/userSlice";
+import { passUserInfo } from "../../../store/modules/user";
+import {selectHeaderStatus} from "../../../store/modules/header";
+import {
+  selectAuthUser,
+  selectAuthUserName, selectAuthUserPic,
+  selectAuthUserSlug
+} from "../../../store/modules/authUser";
 
 export default function Header() {
-  const userState = useSelector(state => state.authUser.userInform)
-  const headerState = useSelector(state => state.header.isHeaderOpen)
+  const userState = useSelector(selectAuthUser)
+  const userName = useSelector(selectAuthUserName)
+  const userSlug = useSelector(selectAuthUserSlug)
+  const userPic = useSelector(selectAuthUserPic)
+  const headerState = useSelector(selectHeaderStatus)
   const dispatch = useDispatch()
   const openPop = () => {dispatch(openModal("signIn"))}
   let variant;
@@ -35,9 +44,9 @@ export default function Header() {
         <div className="header__user" onClick={toUserProfile}>
         <User
           variant={"small"}
-          userName={userState.userName}
-          userPicUrl={userState.userPic}
-          userPicAlt={userState.id}
+          userName={userName}
+          userPicUrl={userPic}
+          userPicAlt={userSlug}
         />
         </div>
       )

@@ -1,16 +1,16 @@
-import React, {useEffect} from "react";
+import React from "react";
 import CardUser from "../cardUser/cardUser";
 import Heading from "../../primitives/heading/heading";
 import {GiFallingStar} from "react-icons/gi";
 import "./bestCreators.css";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchUsers} from "../../../store/usersSlice";
 import {useNavigate} from "react-router-dom";
-import {passUserInfo} from "../../../store/userSlice";
+import {passUserInfo} from "../../../store/modules/user";
+import {selectUsers} from "../../../store/modules/usersList";
 
 export default function BestCreators() {
   const dispatch = useDispatch();
-  const content = useSelector(state => state.users.content)
+  const usersLIst = useSelector(selectUsers)
   function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -18,12 +18,12 @@ export default function BestCreators() {
   }
   let navigate = useNavigate();
   function getUserInfo(userId) {
-    let user = content.find(user=>user.id===userId)
+    let user = usersLIst.find(user=>user.id===userId)
     console.log(user)
     navigate(`/profile`)
     dispatch(passUserInfo(user))
   }
-  const result = content.map((user) => <CardUser
+  const result = usersLIst.map((user) => <CardUser
     userName={user.userName}
     userPicUrl={user.userPic}
     userPicAlt={user.id}
@@ -32,9 +32,6 @@ export default function BestCreators() {
     likesCount={getRandomIntInclusive(100, 10000)}
   />);
 
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch])
 
   return (
     <div className="bestCreators">
