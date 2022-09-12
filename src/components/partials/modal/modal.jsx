@@ -5,25 +5,20 @@ import SignIn from "../sigIn/signIn";
 import "./modal.css";
 import AddNewVideo from "../addNewVideo/addNewVideo";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
 
 export default function Modal(props) {
   const className = `modal modal_${props.modalStatus} modal_${props.modalVariant}`;
-  const signInStatus = useSelector(state => state.authUser.remindPassword)
   return (
     <div className={className}>
       <div className="modal__wrapper">
         <div className="modal__signUp">
           <SignUp
             crossOnClick={props.onCancel}
-            buttonOnClick={props.signUpOnClick}
           />
         </div>
         <div className="modal__signIn">
           <SignIn
             crossOnClick={props.onCancel}
-            remindPassword={signInStatus}
-            buttonOnClick={props.signInOnClick}
           />
         </div>
         <div className="modal__addNewVideo">

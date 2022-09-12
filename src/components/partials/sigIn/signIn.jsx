@@ -8,15 +8,22 @@ import { GrClose } from "react-icons/gr";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import {openModal} from "../../../store/modules/modal";
-import {sendAuthUserData} from "../../../store/modules/authUser";
+import {
+  selectAuthError,
+  selectRemindPassword,
+  selectSpinnerState,
+  sendAuthUserData
+} from "../../../store/modules/authUser";
 
 export default function SignIn(props) {
   const dispatch =useDispatch()
-  const spinnerState = useSelector(state => state.authUser.spinnerState)
+  const spinnerState = useSelector(selectSpinnerState)
+  const remindPassword = useSelector(selectRemindPassword)
+  const errorMessage = useSelector(selectAuthError)
   const openPop = () => {dispatch(openModal("signUp"))}
   const [inputNameState, setInputNameState] = useState("");
   const [inputPasswordState, setInputPasswordState] = useState("");
-  const errorClassName = `signIn__error signIn__error_${props.remindPassword}`;
+  const errorClassName = `signIn__error signIn__error_${remindPassword}`;
   let data = {
     "username": undefined,
     "password": undefined
@@ -47,7 +54,7 @@ export default function SignIn(props) {
           <Heading weight={1}>Sign <span style={{ color: "#FF6363" }}>In</span></Heading>
         </div>
         <div className={errorClassName}>
-          <Heading weight={5}><span style={{ color: "black", fontWeight: 700 }}>Your Password is incorrect. Please, try again</span></Heading>
+          <Heading weight={5}><span style={{ color: "black", fontWeight: 700 }}>{errorMessage}</span></Heading>
         </div>
         <div className="signIn__name">
           <Input
@@ -63,7 +70,7 @@ export default function SignIn(props) {
             variant={"password"}
             heading={"Password"}
             placeholder={"Type password…"}
-            remindPassword={props.remindPassword}
+            remindPassword={remindPassword}
             passwordValue={inputPasswordState}
             onInputPasswordOnChange={setInputPasswordState}
           />

@@ -31,7 +31,6 @@ export default function SignUp(props) {
         "username": inputNameState,
         "password": inputPasswordState
       }
-      console.log(data)
       dispatch(sendRegUserData(data))
       setInputNameState("")
       setInputPasswordState("")
@@ -40,12 +39,10 @@ export default function SignUp(props) {
     else if (inputPasswordState.length===0 || inputRepeatPasswordState.length===0 || inputNameState.length===0){
       setIsPasswordCorrect(true)
       setMessage("Please fill out all forms")
-      console.log(message)
     }
     else {
       setIsPasswordCorrect(true)
       setMessage("Passwords don't match, please try again.")
-      console.log(message)
     }
   }
 

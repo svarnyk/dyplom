@@ -7,7 +7,7 @@ import Button from "../../primitives/button/button";
 import Video from "../../primitives/video/video";
 import PropTypes from "prop-types";
 import { useDispatch} from "react-redux";
-import { sendVideoData } from "../../../store/videoSlice";
+import { sendVideoData } from "../../../store/modules/video";
 
 export default function AddNewVideo(props) {
   const dispatch =useDispatch()
