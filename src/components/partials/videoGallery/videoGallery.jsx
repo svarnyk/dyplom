@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../../store/modules/modal";
 import { selectVideos } from "../../../store/modules/videosList";
 import {selectUserId} from "../../../store/modules/user";
-import {selectHeaderStatus} from "../../../store/modules/header";
+import { selectAuthoriseState } from "../../../store/modules/authUser";
 
 export default function VideoGallery(props) {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export default function VideoGallery(props) {
   };
   const content = useSelector(selectVideos);
   const userStateId = useSelector(selectUserId);
-  const headerStatus = useSelector(selectHeaderStatus)
+  const isUserAuthorised = useSelector(selectAuthoriseState)
   let selectVideoss = content.filter(function(video) {
     return video.userId === userStateId;
   });
@@ -32,7 +32,7 @@ export default function VideoGallery(props) {
   );
 
   const headingClassName = `${props.heading}'s videos`;
-  let buttonStatus = !headerStatus;
+  let buttonStatus = !isUserAuthorised;
   return (
     <div className="videoGallery">
       <div className="videoGallery__header">

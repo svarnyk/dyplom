@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
 import modalSlice from "./modules/modal/modal.store"
-import headerSlice from "./modules/header/header.store"
 import userSlice from "./modules/user/user.store";
 import videosSlice from "./modules/videosList/videosList.store";
 import usersSlice from "./modules/usersList/usersList.store";
@@ -11,7 +10,6 @@ import videoSlice from "./modules/video/video.store";
 export default configureStore({
   reducer: {
     modal: modalSlice,
-    header: headerSlice,
     user: userSlice,
     users: usersSlice,
     videos: videosSlice,
@@ -19,4 +17,9 @@ export default configureStore({
     regUser: regUserSlice,
     video: videoSlice,
   },
+  // preloadedState: {
+  //   user: localStorage.getItem("userLocal")
+  //     ? JSON.parse(localStorage.getItem("userLocal"))
+  //     : {},
+  // },
 })

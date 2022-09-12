@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { closeModal } from "../modal";
-import { activeHeader } from "../header";
 
 export const sendAuthUserData = createAsyncThunk(
   "authUser/sendAuthUserData",
@@ -22,7 +21,6 @@ export const sendAuthUserData = createAsyncThunk(
       dispatch(passUserInfo(answer))
       dispatch(passUserToken(answer.authToken))
       dispatch(closeModal())
-      dispatch(activeHeader())
     } catch (error) {
       console.log(error.message);
       return rejectWithValue(error.message);
@@ -36,10 +34,11 @@ const authUserSlice = createSlice({
     userData: {},
     userInform: {},
     userToken: null,
+    isAuthorised: false,
     authStatus: null,
     error: null,
     remindPassword: false,
-    spinnerState: false
+    spinnerState: false,
   },
   reducers: {
     passUserData(state, action) {
@@ -55,12 +54,14 @@ const authUserSlice = createSlice({
   extraReducers: {
     [sendAuthUserData.pending]: (state) =>{
       state.authStatus = "loading"
+      state.isAuthorised = false
       state.error = null
       state.remindPassword = false
       state.spinnerState = true
     },
     [sendAuthUserData.fulfilled]: (state) =>{
       state.authStatus = "resolved"
+      state.isAuthorised = true
       state.error = null
       state.remindPassword = false
       state.spinnerState = false
@@ -68,6 +69,7 @@ const authUserSlice = createSlice({
     [sendAuthUserData.rejected]: (state,action) =>{
       state.authStatus = "rejected"
       state.error = action.payload
+      state.isAuthorised = false
       state.remindPassword = true
       state.spinnerState = false
     },

@@ -12,3 +12,4 @@ export const selectAuthStatus = createSelector(rootSelector, ({authStatus})=>aut
 export const selectAuthError = createSelector(rootSelector, ({error})=>error)
 export const selectRemindPassword = createSelector(rootSelector, ({remindPassword})=>remindPassword)
 export const selectSpinnerState = createSelector(rootSelector, ({spinnerState})=>spinnerState)
+export const selectAuthoriseState = createSelector(rootSelector, ({isAuthorised})=>isAuthorised)

@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   HomePage,
   UserProfilePage,
-  NotFoundPage
+  NotFoundPage,
+  UserNotFoundPage
 } from "./pages";
 
 
@@ -19,7 +20,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="/profile" element={<UserProfilePage/>} />
+          <Route path="/profile/:id" element={<UserProfilePage/>} />
+          <Route path="/profile/*" element={<UserNotFoundPage/>} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

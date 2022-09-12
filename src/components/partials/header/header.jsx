@@ -6,28 +6,25 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
 import {openModal} from "../../../store/modules/modal";
-
 import "./header.css"
 import { useNavigate } from "react-router-dom";
-import { passUserInfo } from "../../../store/modules/user";
-import {selectHeaderStatus} from "../../../store/modules/header";
 import {
-  selectAuthUser,
-  selectAuthUserName, selectAuthUserPic,
+  selectAuthoriseState,
+  selectAuthUserName,
+  selectAuthUserPic,
   selectAuthUserSlug
 } from "../../../store/modules/authUser";
 
 export default function Header() {
-  const userState = useSelector(selectAuthUser)
   const userName = useSelector(selectAuthUserName)
   const userSlug = useSelector(selectAuthUserSlug)
   const userPic = useSelector(selectAuthUserPic)
-  const headerState = useSelector(selectHeaderStatus)
+  const isUserAuthorised = useSelector(selectAuthoriseState)
   const dispatch = useDispatch()
   const openPop = () => {dispatch(openModal("signIn"))}
   let variant;
   const headerIsOpen = () => {
-    if (headerState === false) {
+    if (isUserAuthorised === false) {
       variant = "close"
       return (
         <div className="header__button">
@@ -38,7 +35,7 @@ export default function Header() {
         />
         </div>
       )
-    } else if (headerState === true) {
+    } else if (isUserAuthorised === true) {
       variant = "open"
       return (
         <div className="header__user" onClick={toUserProfile}>
@@ -56,8 +53,7 @@ export default function Header() {
   const nav = () => {navigate(`/`)}
   const className = `header header_${variant}`;
   function toUserProfile() {
-    navigate(`/profile`)
-    dispatch(passUserInfo(userState))
+    navigate(`/profile/${userSlug}`)
   }
   return (
     <div className={className}>

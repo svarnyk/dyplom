@@ -8,7 +8,8 @@ import BestCreators from "../../components/partials/bestCreators/bestCreators";
 import {useDispatch, useSelector} from "react-redux";
 import { openModal } from "../../store/modules/modal";
 import {fetchUsers} from "../../store/modules/usersList";
-import {selectHeaderStatus} from "../../store/modules/header";
+import { selectAuthoriseState } from "../../store/modules/authUser";
+import { fetchVideos } from "../../store/modules/videosList";
 
 
 export default function HomePage() {
@@ -16,9 +17,12 @@ export default function HomePage() {
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch])
-  const openPop = () => {dispatch(openModal("signUp"))}
-  const headerStatus = useSelector(selectHeaderStatus)
-  const visibleButton = headerStatus? {display: "none"}:null
+  useEffect(() => {
+    dispatch(fetchVideos());
+  }, [dispatch]);
+  const openPop = (variant) => {dispatch(openModal(variant))}
+  const isUserAuthorised = useSelector(selectAuthoriseState)
+  const stateButton = isUserAuthorised? {lable: "Add video", modalVariant: "addNewVideo"}:{lable: "Start Now", modalVariant: "signUp"}
   return (
     <DefaultLayout>
       <div className="homePage__wrapper">
@@ -28,11 +32,11 @@ export default function HomePage() {
         <div className="homePage__greeting">
           <Heading weight={5}>Create videos with a single click. Add subtitles, transcribe audio and more</Heading>
         </div>
-        <div style={visibleButton} className="homePage__button">
+        <div className="homePage__button">
           <Button
-            label={"Start Now"}
+            label={stateButton.lable}
             variant={"primary"}
-            onClick={openPop}
+            onClick={()=>{openPop(stateButton.modalVariant)}}
           />
         </div>
         <div className="homePage__users">
