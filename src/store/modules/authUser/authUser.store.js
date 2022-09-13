@@ -13,14 +13,13 @@ export const sendAuthUserData = createAsyncThunk(
         body: JSON.stringify(data)
       });
       if (!response.ok) {
-        throw new Error("Your Password is incorrect. Please, try again");
+        const answer = await response.json();
+        throw new Error(answer.message);
       }
 
       const answer = await response.json();
-      console.log(answer.authToken);
-      dispatch(passUserInfo(answer))
-      dispatch(passUserToken(answer.authToken))
       dispatch(closeModal())
+      return answer
     } catch (error) {
       console.log(error.message);
       return rejectWithValue(error.message);
@@ -31,7 +30,6 @@ export const sendAuthUserData = createAsyncThunk(
 const authUserSlice = createSlice({
   name: "authUser",
   initialState: {
-    userData: {},
     userInform: {},
     userToken: null,
     isAuthorised: false,
@@ -41,14 +39,11 @@ const authUserSlice = createSlice({
     spinnerState: false,
   },
   reducers: {
-    passUserData(state, action) {
-      state.userData = action.payload;
-    },
     passUserInfo(state, action) {
       state.userInform = action.payload;
     },
-    passUserToken(state, action) {
-      state.userToken = action.payload;
+    unAuthorise(state) {
+      state.isAuthorised = false;
     },
   },
   extraReducers: {
@@ -59,8 +54,10 @@ const authUserSlice = createSlice({
       state.remindPassword = false
       state.spinnerState = true
     },
-    [sendAuthUserData.fulfilled]: (state) =>{
+    [sendAuthUserData.fulfilled]: (state, action) =>{
       state.authStatus = "resolved"
+      state.userInform = action.payload
+      state.userToken = action.payload.authToken
       state.isAuthorised = true
       state.error = null
       state.remindPassword = false
