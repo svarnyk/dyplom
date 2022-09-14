@@ -46,8 +46,11 @@ const authUserSlice = createSlice({
     passUserInfo(state, action) {
       state.userInform = action.payload
     },
-    unAuthorise(state) {
+    unAuthorise(state, action) {
       state.isAuthorised = false
+      state.userInform = action.payload
+      state.userToken = null
+      state.authStatus = "unauthorised"
     },
   },
   extraReducers: {
@@ -76,6 +79,6 @@ const authUserSlice = createSlice({
     },
   },
 })
-export const { passUserData, passUserInfo, passUserToken } =
+export const { passUserData, passUserInfo, passUserToken, unAuthorise } =
   authUserSlice.actions
 export default authUserSlice.reducer

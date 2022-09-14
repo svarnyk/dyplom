@@ -19,6 +19,14 @@
 .header__control{
   cursor: pointer;
 }
+.header__authorise {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header__exitButton{
+  display: flex;
+}
 @media screen and (max-width: 768px) {
   .header__wrapper{
     margin: 33px 20px;

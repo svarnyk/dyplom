@@ -1,29 +1,29 @@
-import React from "react";
-import VideoCard from "../videoCard/videoCard";
-import Button from "../../primitives/button/button";
-import Heading from "../../primitives/heading/heading";
-import { FaYoutube } from "react-icons/fa";
-import "./videoGallery.css";
-import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../../../store/modules/modal";
-import { selectVideos } from "../../../store/modules/videosList";
-import {selectUserId} from "../../../store/modules/user";
-import { selectAuthoriseState } from "../../../store/modules/authUser";
+import React from "react"
+import {
+  useDispatch,
+  useSelector,
+} from "react-redux"
+import VideoCard from "../videoCard/videoCard"
+import Button from "../../primitives/button/button"
+import Heading from "../../primitives/heading/heading"
+import { FaYoutube } from "react-icons/fa"
+import "./videoGallery.css"
+import PropTypes from "prop-types"
+import { openModal } from "../../../store/modules/modal"
+import { selectVideosById } from "../../../store/modules/videosList"
+import {selectUserId} from "../../../store/modules/user"
+import { selectAuthoriseState } from "../../../store/modules/authUser"
 
 export default function VideoGallery(props) {
   const dispatch = useDispatch();
   const openPop = () => {
     dispatch(openModal("addNewVideo"));
   };
-  const content = useSelector(selectVideos);
   const userStateId = useSelector(selectUserId);
   const isUserAuthorised = useSelector(selectAuthoriseState)
-  let selectVideoss = content.filter(function(video) {
-    return video.userId === userStateId;
-  });
+  const selectVideos = useSelector(selectVideosById(userStateId))
 
-  const result = selectVideoss.map((video) =>
+  const result = selectVideos.map((video) =>
     <VideoCard
       urlVideo={video.url}
       videoName={video.title}
