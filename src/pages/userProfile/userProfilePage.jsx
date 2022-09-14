@@ -1,53 +1,50 @@
-import React, { useEffect } from "react";
-import DefaultLayout from "../../components/layouts/common/common";
-import User from "../../components/partials/user/user";
-import VideoGallery from "../../components/partials/videoGallery/videoGallery";
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
+import DefaultLayout from "../../components/layouts/common/common"
+import User from "../../components/partials/user/user"
+import VideoGallery from "../../components/partials/videoGallery/videoGallery"
 import "./userProfilePage.css"
-import {useDispatch, useSelector} from "react-redux";
-import { fetchUsers, selectUsers } from "../../store/modules/usersList";
-import {fetchVideos} from "../../store/modules/videosList";
-import { passUserInfo, selectUserName, selectUserPic, selectUserSlug } from "../../store/modules/user";
-import { useParams } from "react-router-dom";
+import { fetchUsers, selectUserBySlug } from "../../store/modules/usersList"
+import { fetchVideos } from "../../store/modules/videosList"
+import {
+  passUserInfo,
+  selectUserName,
+  selectUserPic,
+  selectUserSlug,
+} from "../../store/modules/user"
 
 export default function UserProfilePage() {
-  const routeParams = useParams();
-  const dispatch = useDispatch();
+  const routeParams = useParams()
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(fetchUsers())
   }, [dispatch])
   useEffect(() => {
-    dispatch(fetchVideos());
-  }, [dispatch]);
-  const userList = useSelector(selectUsers)
+    dispatch(fetchVideos())
+  }, [dispatch])
   const userName = useSelector(selectUserName)
   const userPic = useSelector(selectUserPic)
   const userSlug = useSelector(selectUserSlug)
-  function getUserInfo(userId) {
-    let user = userList.find(user=>user.slug===userId)
-    console.log(user)
-    dispatch(passUserInfo(user))
-  }
+  const currentUserSlug = useSelector(selectUserBySlug(routeParams.id))
   useEffect(() => {
-    getUserInfo(routeParams.id);
-  }, [getUserInfo]);
-
+    dispatch(passUserInfo(currentUserSlug))
+  }, [dispatch, currentUserSlug])
   return (
     <DefaultLayout>
       <div className="userProfilePage__wrapper">
         <div className="userProfilePage__user">
           <User
-            variant={"large"}
+            variant="large"
             userName={userName}
             userPicUrl={userPic}
             userPicAlt={userSlug}
           />
         </div>
         <div className="userProfilePage__gallery">
-          <VideoGallery
-            heading={userName}
-          />
+          <VideoGallery heading={userName} />
         </div>
       </div>
     </DefaultLayout>
-  );
+  )
 }
