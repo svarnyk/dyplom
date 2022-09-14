@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./addNewVideo.css";
 import Heading from "../../primitives/heading/heading";
 import Input from "../../primitives/input/input";
@@ -6,23 +6,22 @@ import DescriptionForm from "../../primitives/descriptionForm/descriptionForm";
 import Button from "../../primitives/button/button";
 import Video from "../../primitives/video/video";
 import PropTypes from "prop-types";
-import { useDispatch} from "react-redux";
-import { sendVideoData } from "../../../store/modules/video";
+import { useDispatch, useSelector } from "react-redux";
+import { selectLoadVideoStatus, selectVideoImageStatus, sendVideoData } from "../../../store/modules/video";
 
 export default function AddNewVideo(props) {
-  const dispatch =useDispatch()
-  const [inputLinkState, setInputLinkState] = useState('');
-  const [inputNameState, setInputNameState] = useState('');
-  const [descriptionState, setDescriptionState] = useState('');
-  const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
+  const videoLoadStatus = useSelector(selectLoadVideoStatus);
+  const videoImageStatus = useSelector(selectVideoImageStatus)
+  const [inputLinkState, setInputLinkState] = useState("");
+  const [inputNameState, setInputNameState] = useState("");
+  const [descriptionState, setDescriptionState] = useState("");
   const [state1, setState1] = useState("notConfirmed");
   const className = `addNewVideo addNewVideo_${state1}`;
   let data = {
     "url": undefined,
     "title": undefined,
-    "description": undefined,
-    "id": undefined,
-    "userId": undefined,
+    "description": undefined
   };
 
   function getData() {
@@ -30,28 +29,30 @@ export default function AddNewVideo(props) {
       data = {
         "url": inputLinkState,
         "title": inputNameState,
-        "description": descriptionState,
+        "description": descriptionState
       };
-      console.log(data)
-      dispatch(sendVideoData(data))
-      setMessage("Successful");
+      console.log(data);
+      dispatch(sendVideoData(data));
       setState1("confirmed");
       // setInputLinkState("")
       // setInputNameState("")
       // setDescriptionState("")
     }
   }
-function backToStart() {
-  props.toVideoOnClick()
-  setState1("notConfirmed")
-}
+
+  function backToStart() {
+    props.toVideoOnClick();
+    setState1("notConfirmed");
+  }
+
+
 
 
   return (
     <div className={className}>
       <div className="addNewVideo__wrapper">
         <div className="addNewVideo__heading">
-          <Heading weight={1}>Add <span style={{color: "#FF6363"}}>New</span> Video</Heading>
+          <Heading weight={1}>Add <span style={{ color: "#FF6363" }}>New</span> Video</Heading>
         </div>
         <div className="addNewVideo__link">
           <Input
@@ -79,14 +80,14 @@ function backToStart() {
             onDescriptionOnChange={setDescriptionState}
           />
         </div>
-        <div className="addNewVideo__video" style={{pointerEvents: "none"}}>
+        <div className="addNewVideo__video" style={{ pointerEvents: "none" }}>
           <Video
-            variant={"checkMark"}
+            variant={videoImageStatus}
             urlVideo={inputLinkState}
           />
         </div>
         <div className="addNewVideo__message">
-          <Heading weight={2}>{message}</Heading>
+          <Heading weight={2}>{videoLoadStatus}</Heading>
         </div>
         <div className="addNewVideo__buttonBlock">
           <div className="addNewVideo__buttonCansel">
@@ -113,16 +114,16 @@ function backToStart() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 AddNewVideo.PropTypes = {
   cancelOnClick: PropTypes.func,
   buttonOnClick: PropTypes.func,
-  toVideoOnClick: PropTypes.func,
-}
+  toVideoOnClick: PropTypes.func
+};
 AddNewVideo.defaultProps = {
   cancelOnClick: undefined,
   buttonOnClick: undefined,
-  toVideoOnClick: undefined,
-}
+  toVideoOnClick: undefined
+};

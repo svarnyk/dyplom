@@ -7,7 +7,7 @@ export default {
   argTypes: {
     urlVideo: "https://www.youtube.com/watch?v=Euj_p2c6IBQ",
     variant: {
-      options:["playButton", "checkMark"],
+      options:["playButton", "checkMark", "progress"],
       control :{type: "radio"}
     },
   },

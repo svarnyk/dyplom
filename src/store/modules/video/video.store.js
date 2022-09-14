@@ -27,21 +27,25 @@ const videoSlice = createSlice({
   initialState: {
     videoInfo: null,
     status: null,
+    videoImageStatus: null,
     error: null,
   },
   reducers: {},
   extraReducers: {
     [sendVideoData.pending]: (state) => {
-      state.status = "loading";
+      state.status = "Loading";
+      state.videoImageStatus = "progress"
       state.error = null;
     },
     [sendVideoData.fulfilled]: (state, action) => {
-      state.status = "resolved";
+      state.status = "Successful";
+      state.videoImageStatus = "checkMark"
       state.videoInfo = action.payload;
       state.error = null;
     },
     [sendVideoData.rejected]: (state, action) => {
-      state.status = "rejected";
+      state.status = "You are not allowed to add video";
+      state.videoImageStatus = "playButton"
       state.error = action.payload;
     }
   }
