@@ -5,17 +5,18 @@ import {GiFallingStar} from "react-icons/gi";
 import "./bestCreators.css";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {selectUsers} from "../../../store/modules/usersList";
+import { sortUsersByUserName } from "../../../store/modules/usersList";
 import { selectVideos } from "../../../store/modules/videosList";
 
 export default function BestCreators() {
-  const usersList = useSelector(selectUsers)
+  const sortUserByName = useSelector(sortUsersByUserName)
+
   const videosList = useSelector(selectVideos)
   const getQuantityOfUserVideo = (userId) => {
     return videosList.filter((video)=>video.userId===userId).length
   }
-  let navigate = useNavigate();
-  const result = usersList.map((user) => <CardUser
+  const navigate = useNavigate();
+  const result = sortUserByName.map((user) => <CardUser
     userName={user.userName}
     userPicUrl={user.userPic}
     userPicAlt={user.id}

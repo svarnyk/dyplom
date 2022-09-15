@@ -4,7 +4,12 @@ export const fetchVideos = createAsyncThunk(
   "videos/fetchVideos",
   async function (_,{rejectWithValue}) {
     try {
-      const response = await fetch("https://wonderful-app-lmk4d.cloud.serverless.com/video", {method: "GET"})
+      const response = await fetch("https://wonderful-app-lmk4d.cloud.serverless.com/video", {
+        method: "GET",
+        headers: {
+          CORS: "Access-Control-Allow-Origin"
+        }
+      })
       if (!response.ok) {
         throw new Error("Server error")
       }

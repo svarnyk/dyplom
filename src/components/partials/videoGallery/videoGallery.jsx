@@ -11,7 +11,6 @@ import "./videoGallery.css"
 import PropTypes from "prop-types"
 import { openModal } from "../../../store/modules/modal"
 import { selectVideosById } from "../../../store/modules/videosList"
-import {selectUserId} from "../../../store/modules/user"
 import { selectAuthoriseState } from "../../../store/modules/authUser"
 
 export default function VideoGallery(props) {
@@ -19,9 +18,8 @@ export default function VideoGallery(props) {
   const openPop = () => {
     dispatch(openModal("addNewVideo"));
   };
-  const userStateId = useSelector(selectUserId);
   const isUserAuthorised = useSelector(selectAuthoriseState)
-  const selectVideos = useSelector(selectVideosById(userStateId))
+  const selectVideos = useSelector(selectVideosById)
 
   const result = selectVideos.map((video) =>
     <VideoCard

@@ -4,7 +4,12 @@ export const fetchUsers = createAsyncThunk(
   "users/fetchUsers",
   async function (_,{rejectWithValue}) {
     try {
-      const response = await fetch("https://wonderful-app-lmk4d.cloud.serverless.com/user", {method: "GET"})
+      const response = await fetch("https://wonderful-app-lmk4d.cloud.serverless.com/user", {
+        method: "GET",
+        headers: {
+          CORS: "Access-Control-Allow-Origin"
+        }
+      })
       if (!response.ok) {
         throw new Error("Server error");
       }
@@ -20,6 +25,7 @@ const usersSlice = createSlice({
   name: "users",
   initialState: {
     usersList: [],
+    sortUsersListByName: [],
     status: null,
     error: null,
   },
@@ -32,6 +38,7 @@ const usersSlice = createSlice({
     [fetchUsers.fulfilled]: (state, action) => {
       state.status = "resolved"
       state.usersList = action.payload
+      state.sortUsersListByName = action.payload.sort((a,b)=>a.userName<b.userName?-1:1)
       state.error = null
     },
     [fetchUsers.rejected]: (state, action) => {
