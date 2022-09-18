@@ -13,6 +13,7 @@ app.render(
   <React.StrictMode>
     {/*<StyleLoader />*/}
     <Provider store={store}>
+      <PersistGate persistor={persistor}>
       <PersistGate loading={null} persistor={persistor}>
       <App/>
       </PersistGate>
