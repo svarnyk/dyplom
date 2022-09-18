@@ -4,7 +4,8 @@ import App from "./app"
 import reportWebVitals from "./reportWebVitals"
 import StyleLoader from "./styleLoader"
 import {Provider} from "react-redux";
-import store from "./store/index";
+import { PersistGate } from "redux-persist/integration/react";
+import store, { persistor } from "./store/index";
 
 const app = createRoot(document.getElementById("root"))
 
@@ -12,7 +13,9 @@ app.render(
   <React.StrictMode>
     {/*<StyleLoader />*/}
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
       <App/>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 )
